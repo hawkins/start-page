@@ -1,136 +1,81 @@
-/* general style --------------------*/
-
-body {
-
-
-	background-image:url("http://i.imgur.com/jZSwmCk.jpg");
-	background-repeat: no-repeat;
-	background-size:100% 100%;
-	background-attachment:fixed;
-	font-size:100%;
-	padding:0em;
-	margin:0em;
+body{
+	background-image: url("upfeathers.png");
+	overflow: hidden; /* May be bad */
 }
-
-.hidden {
-	position:absolute;
-	clip: rect(1px, 1px, 1px, 1px);
+#bar {
+	background-image: url("diagonal_waves.png");
+	text-align: center;
+	border: 2px solid white;
+	/*overflow: visible;*/
+	position: relative;
+	width: auto;
+	float: center;
+	height: auto;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	-webkit-box-shadow: 0px 0px 8px 2px #000000;
+	-moz-box-shadow: 0px 0px 8px 2px #000000;
+	box-shadow: 0px 0px 8px 2px #000000;
+	z-index: 1;
 }
-
-header {
-	display:block;
-}
-
-#clockboxActivate {
-	display:inline;
-	color:#FFFFFF;
-	opacity:0.2;
-	position:fixed;
-	top:0.44em;
-	line-height:0.8em;
-	font-size:2em;
-	font-family:impact;
-	padding:0em 0.2em 0em 0.1em;
-	border-right:0.2em solid #FFFFFF;
-
-
-}
-
-#clockbox {
-	display:none;
-	color:#FFFFFF;
-	opacity:0.4;
-	font-size:4em;
-	font-family:impact;
-	text-align:right;
-	position:fixed;
-	top:0.2em;
-	width:30%;
-	background:#000000;
-	padding:0em 0.5em 0em 0.1em;
-	border-bottom:0.1em solid #FFFFFF;
-}
-
 #main {
-	display:block;
-	width:95%;
-	max-width:980px;
-	margin:12em auto;
+	height: 100%;
+	/*-webkit-column-count: 2;*/
+	/*overflow: hidden;*/
+	z-index: 2;
+}
+h1 {
+	font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #2b2b2b;
+	text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+h2 {
+	font: 200 50px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #2b2b2b;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+p {
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("diagonal_waves.png");
+	border: solid white 2px;
+	-webkit-box-shadow: 0px 0px 8px 2px #000000;
+	-moz-box-shadow: 0px 0px 8px 2px #000000;
+	box-shadow: 0px 0px 8px 2px #000000;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+#linkdev {
+	width: 100%;
+	overflow: hidden; /* For floated elements */
+	/**/
+	margin-top: 2%;
+	margin-bottom: 2%;
 
 }
-
-#main section {
-	display:block;
-	margin:0em 15em 6.5em 15em;
-
+#linkdiv div {
+	background-image: url("diagonal_waves.png");
+	text-align: center;
+	border: 2px solid white;
+	/*overflow: visible;*/
+	width: 40%;
+	margin-right: 5%;
+	margin-left: 5%;
+	height: auto;
+	float: left;
+	-webkit-box-shadow: 0px 0px 8px 2px #000000;
+	-moz-box-shadow: 0px 0px 8px 2px #000000;
+	box-shadow: 0px 0px 8px 2px #000000;
+	z-index: 1;
 }
-
-
-#main section article {
-	display:inline;
-	max-width:2em;
-	background:#004D80;
-	padding:3.8em 3.8em 3.8em 3.8em;
-	margin:0em 0em 0em 0em;
-	border-radius:10px;
-	opacity:0.8;
-	box-shadow:0em 0em 2em 0em #000000;
-
-}
-
-#main section article:hover {
-	opacity:1;
-	background:#004D78;
-	box-shadow:0em 0em 2em 0em #000000;
-	padding:3.7em 3.7em 3.7em 3.7em;
-	margin:0.1em 0.1em 0.1em 0.1em;
-}
-
-#oben article:hover {
-	border-top:0.2em solid #FFFFFF;
-}
-#unten article:hover {
-	border-bottom:0.2em solid #FFFFFF;
-}
-
-#main section article img {
-	max-width:190px;
-	max-height:190px;
-	width:2.2em;
-	height:2.2em;
-	opacity:0.8;
-}
-
-
-#search {
-	display:block;
-	width:100%;
-	line-height:2em;
-	margin:0em 0em 0em 0em;
-	opacity:0.4;
-}
-
-
-#search form {
-	display:block;
-	margin:0em 0em 0em 0em;
-	text-align:center;
-}
-
-#q{
-	opacity:0.4;
-	width:40%;
-	margin:0em 1em 0em 0em;
-	text-align:center;
-	box-shadow:0em 0em 2em 0.2em #000000;
-	background:#000000;
-	color:#FFFFFF;
-	font-family:impact;
-	font-size:1.25em;
-
-}
-
-#q:hover{
-	opacity:1;
-	box-shadow:0em 0em 2em 0.2em #FFFFFF;
+#linkdiv a {
+	font: 20px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	color: #333333;
+#linkdiv hr {
+	/* Rule formatting */
 }
