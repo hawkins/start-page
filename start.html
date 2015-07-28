@@ -4,6 +4,7 @@
     <link href="http://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Kameron" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style/start.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
     <div id="bar" class="bar-shadow">
@@ -11,12 +12,23 @@
     </div>
 
     <div id="main">
-        <p>
+        <p id="slot1">
             Maybe your next calendar appointment from google calendar?
         </p>
 
-        <p>
-            Maybe put a notification from google keep?
+        <p id="slot2">
+            <form action="http://google.com/search" target="_blank">
+                <input id="slot2input" name="slot2input" placeholder="> . . ."></input>
+                <!-- Load javascript here, auto focus on page load. Simple google search for now.
+                Eventually, this will incorporate reddit and github searches with some string tag.
+                "-gh" or "-github", "-r" or "-reddit"
+                "-sr" load a specific subreddit -->
+                <input type="submit">
+            </form>
+        </p>
+
+        <p id="slot3" style="display: none">
+            Not really sure what goes here.
         </p>
 
         <div id="linkdiv">
