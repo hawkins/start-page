@@ -1,9 +1,9 @@
 body{
-	background-image: url("upfeathers.png");
+	background-image: url("../img/upfeathers.png");
 	overflow: hidden; /* May be bad */
 }
 #bar {
-	background-image: url("diagonal_waves.png");
+	background-image: url("../img/diagonal_waves.png");
 	text-align: center;
 	border: 2px solid white;
 	/*overflow: visible;*/
@@ -39,7 +39,7 @@ h2 {
 p {
 	font: 30px/1.6 'Kameron', Georgia, serif;
 	text-align: center;
-	background-image: url("diagonal_waves.png");
+	background-image: url("../img/diagonal_waves.png");
 	border: solid white 2px;
 	-webkit-box-shadow: 0px 0px 8px 2px #000000;
 	-moz-box-shadow: 0px 0px 8px 2px #000000;
@@ -58,7 +58,7 @@ p {
 
 }
 #linkdiv div {
-	background-image: url("diagonal_waves.png");
+	background-image: url("../img/diagonal_waves.png");
 	text-align: center;
 	border: 2px solid white;
 	/*overflow: visible;*/
