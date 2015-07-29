@@ -1,6 +1,10 @@
 body{
 	background-image: url("../img/upfeathers.png");
 	overflow: hidden; /* May be bad */
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	margin: 50%;
 }
 #bar {
 	background-image: url("../img/diagonal_waves.png");
@@ -30,7 +34,7 @@ h1 {
 	text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
 }
 h2 {
-	font: 200 50px/1.3 'Oleo Script', Helvetica, sans-serif;
+	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
 	color: #2b2b2b;
 	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
@@ -47,10 +51,28 @@ p {
 	margin-top: 2%;
 	margin-bottom: 1%;
 }
-p input {
+input {
 	/*Note this REALLY should be #main div {...} */
 	background: transparent; /* Maybe partially translucent grey? */
 	width: 100%;
+	text-align: center;
+	border: 0px solid transparent;
+}
+form {
+	/*overflow: visible;*/
+	z-index: 2;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom:0px;
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("../img/diagonal_waves.png");
+	/*border: solid white 2px;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #000000;
+	-moz-box-shadow: 0px 0px 8px 2px #000000;
+	box-shadow: 0px 0px 8px 2px #000000;
 }
 #linkdiv {
 	width: 100%;
@@ -67,7 +89,7 @@ p input {
 	text-align: center;
 	/*border: 2px solid white;*/
 	/*overflow: visible;*/
-	width: 48%;
+	width: 31.3%;
 	margin: 1%;
 	height: auto;
 	float: left;

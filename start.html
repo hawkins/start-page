@@ -16,16 +16,16 @@
             Maybe your next calendar appointment from google calendar?
         </p>
 
-        <p id="slot2">
-            <form action="http://google.com/search" target="_blank">
-                <input id="slot2input" name="slot2input" placeholder="> . . ."></input>
-                <!-- Load javascript here, auto focus on page load. Simple google search for now.
-                Eventually, this will incorporate reddit and github searches with some string tag.
-                "-gh" or "-github", "-r" or "-reddit"
-                "-sr" load a specific subreddit -->
-                <input type="submit">
-            </form>
-        </p>
+
+        <form id="slot2" method="get" action="http://www.google.com/search" target="_blank">
+            <input id="slot2input" name="q" type="text" class="search" placeholder="> . . ." autofocus></input>
+            <!-- Load javascript here, auto focus on page load. Simple google search for now.
+            Eventually, this will incorporate reddit and github searches with some string tag.
+            "-gh" or "-github", "-r" or "-reddit"
+            "-sr" load a specific subreddit -->
+            <input type="submit" style="display:none">
+        </form>
+
 
         <p id="slot3" style="display: none">
             Not really sure what goes here.
@@ -37,6 +37,12 @@
                 <a href="http://www.mycourses.msstate.edu">Blackboard</a>
                 <br>
                 <a href="http://www.my.msstate.edu/">MyCourses</a>
+            </div>
+            <div id="Entertainment">
+                <h2>Entertainment</h2><hr>
+                <a href="http://www.netflix.com">Netflix</a>
+                <br>
+                <a href="http://www.reddit.com">Reddit</a>
             </div>
             <div id="Development">
                 <h2>Development</h2><hr>
