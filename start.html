@@ -4,7 +4,9 @@
     <link href="http://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Kameron" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style/start.css">
+    <link rel="stylesheet" href="style/cal.css" type="text/css">
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-gcal-flow-3.0.1/jquery.gcal_flow.js"></script>
     <title>Start Page</title>
 </head>
 <body>
@@ -13,9 +15,15 @@
     </div>
 
     <div id="main">
-        <p id="slot1">
-            Maybe your next calendar appointment from google calendar?
-        </p>
+        <div id="slot1">
+            Google Calendar Implementation
+        </div>
+        <script type="text/javascript">
+          $('#slot1').gCalFlow({
+            calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
+            maxitem: 5
+          });
+        </script>
 
 
         <form id="slot2" method="get" action="http://www.google.com/search" target="_blank">
@@ -26,7 +34,6 @@
             "-sr" load a specific subreddit -->
             <input type="submit" style="display:none">
         </form>
-
 
         <p id="slot3" style="display: none">
             Not really sure what goes here.
