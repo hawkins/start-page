@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>gCalFlow: jQuery Google Calendar Event List Plug-in</title>
+    <meta name="keywords" content="jQuery,google calendar,jQuery plugin">
+    <meta name="description" content="A widget to show list of events of your google calendar with jQuery.">
+    <link rel="stylesheet" href="stylesheets/styles.css?v3.0.1">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/jquery.gcal_flow.css?v3.0.1">
+    <style tyle="text/css">
+      .gCalFlow { font-size: 100%; font-weight: normal; line-height: 1.2; margin-bottom: 2em;}
+      .gCalFlow a { font-weight: 550; }
+      .gCalFlow .gcf-header-block a { font-weight: bold; }
+      .gCalFlow .gcf-item-date-block { background-color: #eee; }
+    </style>
+    <script src="javascripts/scale.fix.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load("jquery", "1.7.1");</script>
+    <script type="text/javascript">
+      var $ = jQuery;
+      $(function() {
+        $('#gcf-simple').gCalFlow({
+          calid: 'linuxfoundation.org_34363837313836302d343036@resource.calendar.google.com'
+        });
+      });
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.gcal_flow.min.js?v3.0.1"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>gCalFlow: jQuery Google Calendar Event List Plug-in</h1>
+        <p>Show your event list on any website</p>
+        <p class="view"><a href="https://github.com/sugi/jquery-gcal-flow">View the Project on GitHub <small>sugi/jquery-gcal-flow</small></a></p>
+        <ul>
+          <li><a href="https://googledrive.com/host/0B1NvujAKTAEaRXRTT1c3dGpZRDA/jquery-gcal-flow-3.0.1.zip">Download <strong>Stable ZIP</strong></a></li>
+          <li><a href="https://github.com/sugi/jquery-gcal-flow/releases">Download <strong>Source</strong></a></li>
+          <li><a href="https://github.com/sugi/jquery-gcal-flow">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+        <div id="gcf-simple" style="margin-right: 2em;"></div>
+      </header>
+      <section>
+        <h3 id="head">Put your calendar event listing on any website</h3>
+
+        <p>
+          jQuery Google Calendar Flow plug-in provides a widget
+          to show list of upcoming or recently updated events
+          of public google calendar with configurable options
+          and fully customizable HTML design template.
+        </p>
+
+        <p>In the simplest way, you need to specify just calendar ID.
+          The sample on this page is shown by following code:</p>
+<pre><code>&lt;div id="gcf-simple"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$(function() { $('#gcf-simple').gCalFlow({
+  calid: 'linuxfoundation.org_34363837313836302d343036@resource.calendar.google.com'
+});});
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="apiv3">Google Calendar API v3 Migration Note</h3>
+
+<p>
+Old version of this plugin (&lt; 3.0.0) uses Calendar API v2,
+and the API has been shutdown at 2014-11-17.
+Old version is not worked anymore.</p>
+<p>
+Please <b>update to 3.0.0 above</b> for v3 API transition,
+and <b>check <a href="#apikey">about API key</a></b>.
+</p>
+
+
+<h3 id="custom">Customization</h3>
+
+        <p>
+          jQuery Google Calendar Flow plug-in is highly configurable with CSS, Javascript option and HTML templating!
+        </p>
+
+        <h4 id="css">CSS classes</h4>
+
+        <p>This plug-in in uses following classes in default template. You can write CSS to override with your design.</p>
+        <p>If you need more complex change, use template.<p>
+        </p>
+<pre><code>.gCalFlow
+  + .gcf-header-block
+  | + .gcf-title-block
+  |   + .gcf-title
+  + .gcf-item-container-block
+  | + .gcf-item-block
+  |   + .gcf-item-header-block
+  |   | + .gcf-item-date-block
+  |   | | + .gcf-item-daterange
+  |   | + .gcf-item-title-block
+  |   |   + .gcf-item-title
+  |   + .gcf-item-body-block
+  |     + .gcf-item-description
+  |     + .gcf-item-location
+  + .gcf-last-update-block
+    + .gcf-last-update
+</code></pre>
+
+<h4 id="options">Options</h4>
+
+<p>Following options are available for jQuery#gCalFlow call.</p>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Note</th>
+</tr>
+<tr>
+<td>calid</td>
+<td>string</td>
+<td>(none)</td>
+<td>Google Calendar ID (<strong>required</strong> if feed_url is missing)</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>string</td>
+<td>(Demo API key)</td>
+<td>API key (<strong>recommended</strong>, <a href="#apikey">please read description</a>)</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>'upcoming'</td>
+<td>'upcoming' for upcoming events, or 'updates' for events ordered by last modified.</td>
+</tr>
+<tr>
+<td>feed_url</td>
+<td>string</td>
+<td>(none)</td>
+<td>Any Atom feed URL compatible with google's. If this option is specified, 'calid' and 'mode' are ignored.</td>
+</tr>
+<tr>
+<td>maxitem</td>
+<td>int</td>
+<td>15</td>
+<td>Limit for max number of events. You can set any number, but Google may ignore large numbers.</td>
+</tr>
+<tr>
+<td>date_formatter</td>
+<td>function</td>
+<td>ISO style formatter</td>
+<td>This function will be called with two arguments: Date instance and "all day flag".</td>
+</tr>
+<tr>
+<td>daterange_formatter</td>
+<td>function</td>
+<td>ISO style formatter</td>
+<td>This function will be called with three arguments: start date, end date and "all day flag".</td>
+</tr>
+<tr>
+<td>auto_scroll</td>
+<td>boolean</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>scroll_interval</td>
+<td>int</td>
+<td>10 * 1000</td>
+<td>in milliseconds</td>
+</tr>
+<tr>
+<td>link_title</td>
+<td>boolean</td>
+<td>true</td>
+<td>enable link on calendar title</td>
+</tr>
+<tr>
+<td>link_item_title</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enable link on item title</td>
+</tr>
+<tr>
+<td>link_item_description</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enable link on item description</td>
+</tr>
+<tr>
+<td>link_target</td>
+<td>string</td>
+<td>'_blank'</td>
+<td>Target attribute of auto-generated links</td>
+</tr>
+<tr>
+<td>item_description_as_html</td>
+<td>boolean</td>
+<td>false</td>
+<td>Set true to treat item descriptions as HTML.</td>
+</tr>
+<tr>
+<td>no_items_html</td>
+<td>string</td>
+<td>''</td>
+<td>Any HTML string for notification when calendar has no events.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function</td>
+<td>null</td>
+<td>callback function when finish rendering. In this function, a jQuery object contains target node is assigned to 'this'. This is useful to chain other jQuery method or plug-in (e.g. callback: function() { this.effect("highlight") })</td>
+</tr>
+<tr>
+<td>globalize_culture</td>
+<td>string</td>
+<td>(auto-detect)</td>
+<td>Culture string for Globalize</td>
+</tr>
+<tr>
+<td>globalize_fmt_datetime</td>
+<td>string</td>
+<td>'f'</td>
+<td>Format string of Globalize for date and time</td>
+</tr>
+<tr>
+<td>globalize_fmt_date</td>
+<td>string</td>
+<td>'D'</td>
+<td>Format string of Globalize for date</td>
+</tr>
+<tr>
+<td>globalize_fmt_time</td>
+<td>string</td>
+<td>'t'</td>
+<td>Format string of Globalize for time</td>
+</tr>
+<tr>
+<td>globalize_fmt_monthday</td>
+<td>string</td>
+<td>'M'</td>
+<td>Format string of Globalize for month and day</td>
+</tr>
+</table> 
+
+<h4 id="apikey">Use your own API key for v3 API</h4>
+
+<p>
+gCalFlow plugin now uses Google Calendar API v3.
+All client accesses via v3 API has been checked for quota limit of each API project.
+v2 has no limitation, but v3 has.
+</p>
+
+<p>This plugin has been distributed with a API key for demo or really tiny use.
+If you do not specify <b>apikey</b> option, built-in key will be used.
+In this case, <b>the widget may fail to be rendered by quota</b>.
+<p>
+<p>I recommend you <b>to create your own API key and use it</b> for stable functionality on your site. </p>
+
+<p>To create API key, visit <a href="https://console.developers.google.com/">Google Developers Console</a>. Then, follow bellow;</p>
+<ol>
+<li>Create new project (or use project you created before).</li>
+<li>Check "<b>APIs &amp; auth</b>" -&gt; "<b>Credentials</b>" on side menu.</li>
+<li>Hit "<b>Create new Key</b>" button on "<b>Public API access</b>" section.</li>
+<li>Choose "<b>Browser key</b>" and <b>keep blank on referer limitation</b>.</li>
+</ol>
+<p>
+Finally, set your API key on <b>apikey</b> option for gCalFlow() call like following;
+</p>
+<pre><code>&lt;div id="gcf-simple"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$(function() { $('#gcf-simple').gCalFlow({
+  calid: 'your-calendar-id@calendar.goo...',
+  <strong>apikey: 'Your-API-key-string-like-AIzaSyD0vtTU...'</strong>
+});});
+&lt;/script&gt;
+</code></pre>
+
+<h4 id="template">Template</h4>
+
+<p>If the target element has any child nodes, it will be treated as a custom template.
+Google Calendar Flow plug-in will replace the contents of elements based on their class name.
+You can use any design by creating your own template.
+
+</p>
+<p>Note: <em>To use the default template, keep the target element empty (no child nodes)!</em></p>
+
+<h5 id="bultin">Built-in template</h5>
+
+<p>Here is the built-in default. It's a good starting point for creating a modified template.</p>
+<pre><code>&lt;div class="gcf-header-block"&gt;
+  &lt;div class="gcf-title-block"&gt;
+    &lt;span class="gcf-title"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="gcf-item-container-block"&gt;
+  &lt;div class="gcf-item-block"&gt;
+    &lt;div class="gcf-item-header-block"&gt;
+      &lt;div class="gcf-item-date-block"&gt;
+        [&lt;span class="gcf-item-daterange"&gt;&lt;/span&gt;]
+      &lt;/div&gt;
+      &lt;div class="gcf-item-title-block"&gt;
+        &lt;strong class="gcf-item-title"&gt;&lt;/strong&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="gcf-item-body-block"&gt;
+      &lt;div class="gcf-item-description"&gt;
+      &lt;/div&gt;
+      &lt;div class="gcf-item-location"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="gcf-last-update-block"&gt;
+  LastUpdate: &lt;span class="gcf-last-update"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h5 id="vars">Variable classes</h5>
+
+<p>The content of elements with following class name will be replaced:</P>
+
+<table border="1">
+<tr>
+<th>Class name</th>
+<th>Change text to...</th>
+<th>Note</th>
+</tr>
+<tr>
+<td>gcf-title</td>
+<td>Calendar title</td>
+<td></td>
+</tr>
+<tr>
+<td>gcf-last-update</td>
+<td>Last update of the calendar</td>
+<td></td>
+</tr>
+<tr>
+<td>gcf-link</td>
+<td>(text is not replaced)</td>
+<td>This class will be set "href" attribute to calendar URL (not used in default).</td>
+</tr>
+<tr>
+<td>gcf-item-container-block</td>
+<td></td>
+<td>This class item container. The content of this node is cleared, then gcf-item-block element will be appended for each event item. If template dose NOT have this element, no items will be shown.</td>
+</tr>
+<tr>
+<td>gcf-item-block</td>
+<td></td>
+<td>This class will be treated as item template. </td>
+</tr>
+<tr>
+<td>gcf-item-daterange</td>
+<td>Item date range</td>
+<td>Must be a descendant of gcf-item-block. Formatted by 'daterange_formatter' option.</td>
+</tr>
+<tr>
+<td>gcf-item-title</td>
+<td>Item title</td>
+<td>Must be a descendant of gcf-item-block.</td>
+</tr>
+<tr>
+<td>gcf-item-description</td>
+<td>Item description text</td>
+<td>Must be a descendant of gcf-item-block.</td>
+</tr>
+<tr>
+<td>gcf-item-location</td>
+<td>Item location text</td>
+<td>Must be a descendant of gcf-item-block.</td>
+</tr>
+<tr>
+<td>gcf-item-link</td>
+<td>(text is not replaced)</td>
+<td>Must be a descendant of gcf-item-block. This class will be set "href" attribute to item URL (not used in default).</td>
+</tr>
+<tr>
+<td>gcf-item-date, gcf-item-start-date</td>
+<td>Item start date</td>
+<td>Must be a descendant of gcf-item-block (not used in default).</td>
+</tr>
+<tr>
+<td>gcf-item-end-date</td>
+<td>Item end date</td>
+<td>Must be a descendant of gcf-item-block (not used in default).</td>
+</tr>
+<tr>
+<td>gcf-item-update-date</td>
+<td>Item update date</td>
+<td>Must be a descendant of gcf-item-block (not used in default).</td>
+</tr>
+</table>
+
+<h3 id="globalize">Date formatting with Globalize</h3>
+
+<p>
+In default, widget shows ISO style date.
+To customize date format easily, you can use
+<a href="https://github.com/jquery/globalize">Globalize</a>
+Javascript library.
+By just loading Globalize, default date formatting will be
+changed to new one which includes full month and weekday names.
+Load Globalize Javascript files like following;
+</p>
+
+<pre>
+&lt;script src=&quot;/path/to/your/globalize.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/path/to/your/cultures/globalize.culture.<i>en-US</i>.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+
+<p>
+If you'd like to customize more, tune <b>globalize_fmt_*</b> options (<em>globalize_fmt_datetime, globalize_fmt_date, globalize_fmt_time, globalize_fmt_monthday</em>) with
+<a href="https://github.com/jquery/globalize#dates">
+their format string</a>.
+For example, to use short month/week names and 24h format;
+</p>
+
+<pre>
+$('#your-widget-id').gCalFlow({
+  globalize_fmt_datetime: "dddd', 'MMM' 'dd', 'yyyy' 'HH':'mm",
+  globalize_fmt_date: "dddd', 'MMM' 'dd",
+  globalize_fmt_time: "HH':'mm",
+  globalize_fmt_monthday: "MMM' 'dd"
+});
+</pre>
+
+<h3 id="example">Examples</h3>
+
+<h4>Title only updates list (template + js options)</h3>
+
+Code:<br>
+<textarea id="template-sample-script" style="width:100%; height: 14em; border: solid 1px #ccc;" readonly="true">
+<div id="with-my-template" style="width: 100%; height: 180px;">
+  <div class="gcf-header-block">
+    <div class="gcf-title-block">
+      Recent updates on
+      <span class="gcf-title">replaced with calendar name</span>
+    </div>
+  </div>
+  <div class="gcf-item-container-block">
+    <div class="gcf-item-block">
+      <div class="gcf-item-header-block">
+        <div class="gcf-item-title-block">
+          [<span class="gcf-item-daterange">00/00</span>]
+          <strong class="gcf-item-title">Item Title of each event</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#with-my-template').gCalFlow({
+    calid: 'linuxfoundation.org_34363837313836302d343036@resource.calendar.google.com',
+    mode: 'updates',
+    maxitem: 20,
+    auto_scroll: false,
+    daterange_formatter: function (start_date, end_date, allday_p) {
+      function pad(n) { return n < 10 ? "0"+n : n; }
+      return pad(start_date.getMonth()+1) + "/" + pad(start_date.getDate()) + " - " + pad(end_date.getMonth()+1) + "/" + pad(end_date.getDate());
+    }
+  });
+</script>
+</textarea>
+
+Rendered Result:<br>
+<div id="template-sample-container"></div>
+<script type="text/javascript">
+var $ = jQuery;
+$(function(){
+  $('#template-sample-container').html(
+    $('#template-sample-script')[0].value
+  );
+});
+</script>
+
+<h4>Ticker (template + js + CSS)</h4>
+Code:<br>
+<textarea id="ticker-sample-script" style="width: 100%" rows="10">
+<style type="text/css">
+#gcf-ticker .gcf-header-block {
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  float: left;
+  height: 100%;
+}
+#gcf-ticker .gcf-item-container-block {
+  margin-top: 0.2em;
+  overflow: hidden;
+} 
+#gcf-ticker .gcf-item-block .gcf-item-description {
+  padding-left: 1em;
+  color: #888;
+  font-size: 78%;
+}
+#gcf-ticker .gcf-item-description:before { content: " -- "; color: #aaa; }
+</style>
+<div id="gcf-ticker" style="width: 100%; height: 1.4em;">
+  <div class="gcf-header-block">
+    <div class="gcf-title-block">
+        Updates:
+    </div>
+  </div>
+  <div class="gcf-item-container-block">
+    <div class="gcf-item-block">
+      <div class="gcf-item-header-block">
+        <div class="gcf-item-title-block">
+          (<span class="gcf-item-update-date">20/12</span>)
+          <span class="gcf-item-title">Item Title of Your event</span>
+           <span class="gcf-item-description"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $('#gcf-ticker').gCalFlow({
+      calid: 'linuxfoundation.org_34363837313836302d343036@resource.calendar.google.com',
+      maxitem: 25,
+      scroll_interval: 5 * 1000,
+      date_formatter: function (date, allday_p) {
+        function pad(n) { return n < 10 ? "0"+n : n; }
+        return pad(date.getMonth()+1) + "/" + pad(date.getDate()) + "/" + date.getFullYear().toString().substr(-2);
+      }
+    });
+</script>
+</textarea>
+
+Rendered Result:<br>
+<div id="ticker-sample-container">[Result]</div>
+<script type="text/javascript">
+var $ = jQuery;
+$(function(){
+  $('#ticker-sample-container').html(
+    $('#ticker-sample-script')[0].value
+  );
+});
+</script>
+
+<br style="clear:both;">
+<h3 id="copyright">Copyright</h3>
+
+<h4>License</h4>
+
+<p><a href="http://www.opensource.org/licenses/MIT">
+MIT License
+</a></p>
+
+<h4>Author</h4>
+
+<p><a href="http://github.com/sugi">
+Tatsuki Sugiura
+</a></p>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sugi">sugi</a><br>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><a href="https://googledrive.com/host/0B1NvujAKTAEaRXRTT1c3dGpZRDA/">Old version archive on Google Drive</a>.</p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
