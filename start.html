@@ -8,6 +8,14 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/jquery-gcal-flow-3.0.1/jquery.gcal_flow.js"></script>
     <title>Start Page</title>
+    <script type="text/javascript">
+        $(document).ready( function (){
+            $('#slot1p').gCalFlow({
+                calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
+                maxitem: 3
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="bar" class="bar-shadow">
@@ -16,14 +24,11 @@
 
     <div id="main">
         <div id="slot1">
-            Google Calendar Implementation
+            <p id="slot1p">
+                What goes here?
+            </p>
         </div>
-        <script type="text/javascript">
-          $('#slot1').gCalFlow({
-            calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
-            maxitem: 5
-          });
-        </script>
+
 
         <div id="slot2">
             <form id="slot2orm" method="get" action="http://www.google.com/search" target="_blank">
@@ -32,13 +37,13 @@
                 Eventually, this will incorporate reddit and github searches with some string tag.
                 "-gh" or "-github", "-r" or "-reddit"
                 "-sr" load a specific subreddit -->
-                <input type="submit" style="display:none">
+                <input type="submit" style="display:none"></input>
             </form>
         </div>
 
-        <p id="slot3" style="display: none">
-            Not really sure what goes here.
-        </p>
+        <div id="slot3" >
+            Google calendar goes here.
+        </div>
     </div>
     <div id="linkdiv">
         <div id="School">
