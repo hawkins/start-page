@@ -3,14 +3,14 @@
     <link rel="stylesheet" href="C:\bootstrap-3.3.5-dist\css\bootstrap.css" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Kameron" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style/start.css">
     <link rel="stylesheet" href="style/cal.css" type="text/css">
+    <link rel="stylesheet" href="style/start.css">
     <script src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/jquery-gcal-flow-3.0.1/jquery.gcal_flow.js"></script>
     <title>Start Page</title>
     <script type="text/javascript">
         $(document).ready( function (){
-            $('#slot1p').gCalFlow({
+            $('#slot3').gCalFlow({
                 calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
                 maxitem: 3
             });
@@ -23,14 +23,19 @@
     </div>
 
     <div id="main">
-        <div id="slot1">
+        <!-- <div id="slot1">
             <p1 id="slot1p">
                 What goes here?
             </p>
+        </div> -->
+
+
+
+        <div id="slot3" class="NoStyle" >
+            Google calendar goes here.
         </div>
 
-
-        <div id="slot2">
+        <!-- <div id="slot2"> -->
             <form id="slot2orm" method="get" action="http://www.google.com/search" target="_blank">
                 <input id="slot2input" name="q" type="text" class="search" placeholder="> . . ." autofocus></input>
                 <!-- Load javascript here, auto focus on page load. Simple google search for now.
@@ -39,11 +44,7 @@
                 "-sr" load a specific subreddit -->
                 <input type="submit" style="display:none"></input>
             </form>
-        </div>
-
-        <div id="slot3" >
-            Google calendar goes here.
-        </div>
+        <!-- </div> -->
     </div>
     <div id="linkdiv">
         <div id="School">
