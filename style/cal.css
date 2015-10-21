@@ -19,7 +19,7 @@
   .gCalFlow .gcf-title-block {
     font-weight: bold;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-    color: white; }
+    color: black; } /* Titel text "Start Page" color */
     .gCalFlow .gcf-title-block a, .gCalFlow .gcf-title-block a:visited, .gCalFlow .gcf-title-block a:hover {
       _color: white; }
   .gCalFlow .gcf-last-update-block {

@@ -47,6 +47,20 @@ body{
 	/*height: auto;*/
 	/*z-index: 3;*/
 }
+/*Now remove styling from calendar div (#slot3)*/
+#main #slot3 {
+	background-image: none;
+}
+#main #slot3 div{
+	font: 20px/1.6 'Kameron', Georgia, serif;
+	background-image: none;
+	-webkit-box-shadow: 0px 0px 0px 0px #a8a8a8;
+	-moz-box-shadow: 0px 0px 0px 0px #a8a8a8;
+	outline: 1px solid black;%;
+	margin-top: 0%;
+	margin-bottom: 0%;
+
+}
 #main form {
 	/*position: relative;*/
 	/*margin-bottom: 1%;*/
