@@ -11,8 +11,8 @@ This is a basic html page to be loaded as a start page in any web browser.
 ## Instructions
 To setup, clone or fork repository and download files to your computer. Next, open your Google calendar's settings and find the calendar sharing link or ID. Copy this, and create a "calendar.json" file with text similar to this:
 
-'''var calConfig = {"calid":"123alphanumericcalendarID@group.calendar.google.com"}
-'''
+```var calConfig = {"calid":"123alphanumericcalendarID@group.calendar.google.com"}
+```
 
 Now open your browser and set the home page to your start.html file location, example: file:///C:/GitHub/start-repo/start.html
 
