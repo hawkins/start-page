@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="style/cal.css" type="text/css">
     <link rel="stylesheet" href="style/start.css"> <!-- Need to minify this -->
     <script type="text/javascript" src="js/jquery-gcal-flow-3.0.1/jquery.gcal_flow.js"></script>
+    <script type="text/javascript" src="calendar.json"></script> <!-- Calendar Configuration JSON File -->
 
     <title>Start Page</title>
+    <!-- Next thing to do: Read calendar api and link from file. -->
 </head>
 <body>
     <div id="bar" class="bar-shadow">
@@ -32,13 +34,12 @@
 
         <!-- <div id="slot2"> -->
             <!-- This appears as a div to the user -->
-            <form id="slot2form" method="get" action="http://www.google.com/search" target="_blank">
+            <form id="slot2form" method="get" action="http://www.google.com/search" target="_blank" onsubmit="closetab()">
                 <input id="slot2input" name="q" type="text" class="search" placeholder="> . . ." autofocus></input>
                 <!-- Load javascript here, auto focus on page load. Simple google search for now.
                 Eventually, this will incorporate reddit and github searches with some string tag.
                 "-gh" or "-github", "-r" or "-reddit"
                 "-sr" load a specific subreddit -->
-                <input type="submit" style="display:none"></input>
             </form>
         <!-- </div> -->
 
@@ -53,7 +54,7 @@
             <br>
             <a href="http://www.my.msstate.edu/">MyCourses</a>
             <br>
-            <a href="http://www.hlc.quia.com/">German HW</a>
+            <a href="http://www.hlc.quia.com/">German</a>
             <br>
             <a href="https://sites.google.com/site/ece3724/Home">Microprocessors</a>
         </div>
@@ -71,7 +72,7 @@
             <h2>Development</h2><hr>
             <a href="http://www.github.com/">GitHub</a>
             <br>
-            <a href="https://trello.com/b/t2477fEL/grainstorm">VGDC Trello</a>
+            <a href="https://trello.com/">Trello</a>
             <br>
             <a href="http://www.stackoverflow.com/">Stack Overflow</a>
             <br>
@@ -83,9 +84,14 @@
 <script type="text/javascript">
     $(document).ready( function (){
         $('#slot3').gCalFlow({
-            calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
+            calid: calConfig.calid,
             maxitem: 3
         });
     });
+</script>
+<script type="text/javascript">
+    function closetab() {
+        close();
+    }
 </script>
 </html>
