@@ -1,5 +1,5 @@
 # start-page
-a basic start page
+a basic start page for web browsers
 
 This is a basic html page to be loaded as a start page in any web browser.
 
@@ -8,5 +8,22 @@ This is a basic html page to be loaded as a start page in any web browser.
 - Customizable Quick Links
 - Auto-focusing Google Search bar with extensible custom search criterion
 
+## Instructions
+To setup, clone or fork repository and download files to your computer. Next, open your Google calendar's settings and find the calendar sharing link or ID. Copy this, and create a "calendar.json" file with text similar to this:
+'''
+var calConfig = {"calid":"123alphanumericcalendarID@group.calendar.google.com"}
+'''
+
+Now open your browser and set the home page to your start.html file location, example: file:///C:/GitHub/start-repo/start.html
+
+That's it, you're done!
+
+
 ### Resources
-List resources here (google fonts, calendar plugin for jquery, etc)
+This project uses a variety of resources.
+- JQuery 2.1.4
+- Google fonts Oleo Script and Kameron
+- A custom modified version of 's JQuery Calendar plugin, ["gCalFlow"](http://sugi.github.io/jquery-gcal-flow/)
+- And eventually, Bootstrap 3.3.5
+
+
