@@ -17,9 +17,7 @@
   .gCalFlow .gcf-header-block {
     padding: 5px 4px; }
   .gCalFlow .gcf-title-block {
-      display: none; /* Hide title */
     font-weight: bold;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
     color: black; }
     .gCalFlow .gcf-title-block a, .gCalFlow .gcf-title-block a:visited, .gCalFlow .gcf-title-block a:hover {
       _color: white; }

@@ -217,7 +217,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
         t.find('.gcf-title').html($("<a />").attr({
           target: this.opts.link_target,
           href: titlelink
-        }).text(data.summary));
+      }).text("Google Calendar")); /* .text(data.summary)); */
       } else {
         t.find('.gcf-title').text(data.summary);
       }
