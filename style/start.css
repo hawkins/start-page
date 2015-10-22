@@ -1,11 +1,10 @@
 body{
 	background-image: url("../img/upfeathers.png");
-	overflow: hidden; /* May be bad */
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
 	/*position: relative;*/
 	margin: 0%;
-	overflow: auto;
 }
 #bar {
 	background-image: url("../img/diagonal_waves.png");
@@ -49,7 +48,7 @@ body{
 }
 /*Now remove styling from calendar div (#slot3)*/
 #main #slot3 {
-	background-image: none;
+	/*background-image: none;*/
 }
 #main #slot3 div{
 	font: 20px/1.6 'Kameron', Georgia, serif;

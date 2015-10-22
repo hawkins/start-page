@@ -1,33 +1,22 @@
 <html>
 <head>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap-theme.css.map" />
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap.css.map" />
-    <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="C:\bootstrap-3.3.5-dist\css\bootstrap.css" type="text/css" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="style/bootstrap-3.3.5-dist/fonts/glyphicons-halflings-regular.ttf" />
-
-    <link rel="stylesheet" href="C:\bootstrap-3.3.5-dist\css\bootstrap.css" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Kameron" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style/cal.css" type="text/css">
-    <link rel="stylesheet" href="style/start.css"> <!-- minify this -->
-    <link rel="stylesheet" href="style/cal.css" type="text/css">
+
+    <!-- JQuery -->
     <script src="js/jquery-2.1.4.min.js"></script>
+
+    <!-- Google CalFlow Plugin -->
+    <link rel="stylesheet" href="style/cal.css" type="text/css">
+    <link rel="stylesheet" href="style/start.css"> <!-- Need to minify this -->
     <script type="text/javascript" src="js/jquery-gcal-flow-3.0.1/jquery.gcal_flow.js"></script>
+
     <title>Start Page</title>
-    <script type="text/javascript">
-        $(document).ready( function (){
-            $('#slot3').gCalFlow({
-                calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
-                maxitem: 3
-            });
-        });
-    </script>
 </head>
 <body>
     <div id="bar" class="bar-shadow">
@@ -42,6 +31,7 @@
         </div> -->
 
         <!-- <div id="slot2"> -->
+            <!-- This appears as a div to the user -->
             <form id="slot2form" method="get" action="http://www.google.com/search" target="_blank">
                 <input id="slot2input" name="q" type="text" class="search" placeholder="> . . ." autofocus></input>
                 <!-- Load javascript here, auto focus on page load. Simple google search for now.
@@ -63,9 +53,9 @@
             <br>
             <a href="http://www.my.msstate.edu/">MyCourses</a>
             <br>
-            <a href="http://www.hlc.quia.com/">HLC Quia</a>
+            <a href="http://www.hlc.quia.com/">German HW</a>
             <br>
-            <a href="https://sites.google.com/site/ece3724/Home"> Microprocessors</a>
+            <a href="https://sites.google.com/site/ece3724/Home">Microprocessors</a>
         </div>
         <div id="Entertainment">
             <h2>Entertainment</h2><hr>
@@ -73,19 +63,29 @@
             <br>
             <a href="http://www.reddit.com">Reddit</a>
             <br>
+            <a href="http://www.hbonow.com/">HBO Now</a>
+            <br>
             <a href="http://www.youtube.com">YouTube</a>
         </div>
         <div id="Development">
             <h2>Development</h2><hr>
             <a href="http://www.github.com/">GitHub</a>
             <br>
+            <a href="https://trello.com/b/t2477fEL/grainstorm">VGDC Trello</a>
+            <br>
             <a href="http://www.stackoverflow.com/">Stack Overflow</a>
             <br>
             <a href="http://www.reddit.com/r/programming">/r/Programming</a>
-            <br>
-            <a href="https://usepanda.com/app/">Panda Design</a>
 
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $(document).ready( function (){
+        $('#slot3').gCalFlow({
+            calid: 'mulrs3ii4cvda18dk5jgaepk3s@group.calendar.google.com',
+            maxitem: 3
+        });
+    });
+</script>
 </html>
