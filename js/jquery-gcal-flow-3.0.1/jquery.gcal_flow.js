@@ -56,7 +56,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
 
     gCalFlow.prototype.target = null;
 
-    gCalFlow.prototype.template = $("<div class=\"gCalFlow\">\n  <div class=\"gcf-header-block\">\n    <div class=\"gcf-title-block\">\n      <span class=\"gcf-title\"></span>\n    </div>\n  </div>\n  <div class=\"gcf-item-container-block\">\n    <div class=\"gcf-item-block\">\n      <div class=\"gcf-item-header-block\">\n        <div class=\"gcf-item-date-block\">\n          [<span class=\"gcf-item-daterange\"></span>]\n        </div>\n        <div class=\"gcf-item-title-block\">\n          <strong class=\"gcf-item-title\"></strong>\n        </div>\n      </div>\n      <div class=\"gcf-item-body-block\">\n        <div class=\"gcf-item-description\">\n        </div>\n        <div class=\"gcf-item-location\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"gcf-last-update-block\">\n    LastUpdate: <span class=\"gcf-last-update\"></span>\n  </div>\n</div>");
+    gCalFlow.prototype.template = $("<div class=\"gCalFlow\">\n  <div class=\"gcf-header-block\">\n    <div class=\"gcf-title-block\">\n      <span class=\"gcf-title\"></span>\n    </div>\n  </div>\n  <div class=\"gcf-item-container-block\">\n    <div class=\"gcf-item-block\">\n      <div class=\"gcf-item-header-block\">\n        <div class=\"gcf-item-date-block\">\n          <span class=\"gcf-item-daterange\"></span>\n        </div>\n        <div class=\"gcf-item-title-block\">\n          <strong class=\"gcf-item-title\"></strong>\n        </div>\n      </div>\n      <div class=\"gcf-item-body-block\">\n        <div class=\"gcf-item-description\">\n        </div>\n        <div class=\"gcf-item-location\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"gcf-last-update-block\">\n    LastUpdate: <span class=\"gcf-last-update\"></span>\n  </div>\n</div>");
 
     gCalFlow.prototype.opts = {
       maxitem: 15,
@@ -92,7 +92,17 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
           if (allday_p) {
             return "" + (d.getFullYear()) + "-" + (pad_zero(d.getMonth() + 1)) + "-" + (pad_zero(d.getDate()));
           } else {
-            return "" + (pad_zero(d.getMonth() + 1)) + "/" + (pad_zero(d.getDate())) + " from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes())) ;
+              // Is it today?
+              var today = new Date();
+              if (today.getDate() == d.getDate() && today.getMonth() == d.getMonth() && today.getFullYear() == d.getFullYear()) {
+                  return "today from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes()))
+              } else {
+                  if (today.getDate()+1 == d.getDate() && today.getMonth() == d.getMonth() && today.getFullYear() == d.getFullYear()) {
+                      return "tomorrow from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes()))
+                  } else {
+                       return "" + (pad_zero(d.getMonth() + 1)) + "/" + (pad_zero(d.getDate())) + " from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes())) ;
+                  }
+              }
           }
         }
       },
