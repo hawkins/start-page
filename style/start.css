@@ -121,26 +121,28 @@ form {
 	box-shadow: 0px 0px 8px 2px #a8a8a8;
 }
 #linkdiv {
-	width: 95%;
+	width: 96%;
 	overflow: hidden; /* For floated elements */
 	margin-top: 1%;
 	margin-bottom: 1%;
 	padding-left: 4%;
-	padding-right: 4%;
+	/*padding-right: 4%;*/
 	border: none;
 	text-shadow: none;
 	/*margin-right: 4%;
 	margin-left: 4%;*/
 }
 #linkdiv div {
+	display: inline-block;
+    *display: inline;
+	vertical-align: top;
 	background-image: url("../img/diagonal_waves.png");
 	text-align: center;
-	/*border: 2px solid white;*/
 	/*overflow: visible;*/
-	width: 31%;
+	width: 31.1%;
 	margin: 1%;
 	height: auto;
-	float: left;
+	/*float: left;*/
 	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
 	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
 	box-shadow: 0px 0px 8px 2px #a8a8a8;
