@@ -10,7 +10,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
 
   log.error = log.warn = log.log = log.info = log.debug = function() {};
 
-  if ((typeof window !== "undefined" && window !== null) && (typeof console !== "undefined" && console !== null) && (console.log !== null)) {
+  if ((typeof window !== "undefined" && window !== null) && (typeof console !== "undefined" && console !== null) && (console.log != null)) {
     if (!window._gCalFlow_quiet) {
       _ref = ['error', 'warn', 'info'];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -26,7 +26,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
     }
     if (window._gCalFlow_debug) {
       log.debug = function() {
-        if (console.debug !== null) {
+        if (console.debug != null) {
           return console.debug.apply(console, arguments);
         } else {
           return console.log.apply(console, arguments);
@@ -37,7 +37,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
 
   pad_zero = function(num, size) {
     var i, ret, _j, _ref1;
-    if (size === null) {
+    if (size == null) {
       size = 2;
     }
     if (10 * (size - 1) <= num) {
@@ -81,7 +81,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
       globalize_fmt_monthday: 'M',
       date_formatter: function(d, allday_p) {
         var fmtstr;
-        if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.format !== null)) {
+        if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.format != null)) {
           if (allday_p) {
             fmtstr = this.globalize_fmt_date;
           } else {
@@ -94,10 +94,10 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
           } else {
               // Is it today?
               var today = new Date();
-              if (today.getDate() === d.getDate() && today.getMonth() === d.getMonth() && today.getFullYear() === d.getFullYear()) {
+              if (today.getDate() == d.getDate() && today.getMonth() == d.getMonth() && today.getFullYear() == d.getFullYear()) {
                   return "today from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes()))
               } else {
-                  if (today.getDate()+1 === d.getDate() && today.getMonth() === d.getMonth() && today.getFullYear() === d.getFullYear()) {
+                  if (today.getDate()+1 == d.getDate() && today.getMonth() == d.getMonth() && today.getFullYear() == d.getFullYear()) {
                       return "tomorrow from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes()))
                   } else {
                        return "" + (pad_zero(d.getMonth() + 1)) + "/" + (pad_zero(d.getDate())) + " from " + (hours12(d.getHours())) + ":" + (pad_zero(d.getMinutes())) ;
@@ -114,14 +114,14 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
         }
         endstr = '';
         if (sd.getDate() !== ed.getDate() || sd.getMonth() !== ed.getMonth()) {
-          if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.format !== null)) {
+          if ((typeof Globalize !== "undefined" && Globalize != null) && (Globalize.format !== null)) {
             endstr += Globalize.format(ed, this.globalize_fmt_monthday);
           } else {
             endstr += "" + (pad_zero(ed.getMonth() + 1)) + "-" + (pad_zero(ed.getDate()));
           }
         }
         if (!allday_p && (hours12(sd.getHours()) !== hours12(ed.getHours()) || sd.getMinutes() !== ed.getMinutes())) {
-          if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.format !== null)) {
+          if ((typeof Globalize !== "undefined" && Globalize != null) && (Globalize.format !== null)) {
             endstr += Globalize.format(ed, this.globalize_fmt_time);
           } else {
             endstr += " " + (hours12(ed.getHours())) + ":" + (pad_zero(ed.getMinutes()));
@@ -222,7 +222,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
       var ci, desc_body_method, ed, ent, et, etf, gmapslink, ic, it, items, link, sd, st, stf, t, titlelink, _j, _len1, _ref1, _ref2;
       log.debug("start rendering for data:", data);
       t = this.template.clone();
-      titlelink = (_ref1 = this.opts.titlelink) !== null ? _ref1 : "http://www.google.com/calendar/embed?src=" + this.opts.calid;
+      titlelink = (_ref1 = this.opts.titlelink) != null ? _ref1 : "http://www.google.com/calendar/embed?src=" + this.opts.calid;
       if (this.opts.link_title) {
         t.find('.gcf-title').html($("<a />").attr({
           target: this.opts.link_target,
@@ -247,7 +247,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
       } else {
         desc_body_method = 'text';
       }
-      if ((data.items !== null) && data.items.length > 0) {
+      if ((data.items != null) && data.items.length > 0) {
         _ref2 = data.items.slice(0, +this.opts.maxitem + 1 || 9e9);
         for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
           ent = _ref2[_j];
@@ -376,7 +376,7 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
       return this.removeData('gCalFlow');
     },
     render: function() {
-      if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.culture !== null)) {
+      if ((typeof Globalize !== "undefined" && Globalize !== null) && (Globalize.culture != null)) {
         Globalize.culture(this.data('gCalFlow').obj.opts.globalize_culture);
       }
       return this.data('gCalFlow').obj.fetch();
