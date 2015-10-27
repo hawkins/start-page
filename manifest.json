@@ -8,6 +8,6 @@
     "newtab": "start.html"
   },
 
-  "content_security_policy": "script-src 'self' https://googleapis.com/*; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://www.googleapis.com/; object-src 'self'",
   "manifest_version": 2
 }
