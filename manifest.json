@@ -1,0 +1,13 @@
+{
+  "name": "Simple Start Page",
+  "description": "Replace new tab page with a simple start page",
+  "version": "0.1",
+  "author": "Josh Hawkins",
+  "incognito": "split",
+  "chrome_url_overrides": {
+    "newtab": "start.html"
+  },
+
+  "content_security_policy": "script-src 'self' https://googleapis.com/*; object-src 'self'",
+  "manifest_version": 2
+}
