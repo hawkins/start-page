@@ -4,6 +4,9 @@
   "version": "0.1",
   "author": "Josh Hawkins",
   "incognito": "split",
+  "permissions": [
+          "tabs"
+        ],
   "chrome_url_overrides": {
     "newtab": "start.html"
   },
