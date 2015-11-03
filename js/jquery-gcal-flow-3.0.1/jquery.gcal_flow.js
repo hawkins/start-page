@@ -37,6 +37,9 @@ function hours12(hours) { return (hours + 24) % 12 || 12; }
 
   pad_zero = function(num, size) {
     var i, ret, _j, _ref1;
+    if (num === 0) {
+        return "00";
+    }
     if (size === null) {
       size = 2;
     }
