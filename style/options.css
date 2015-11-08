@@ -1,0 +1,166 @@
+body{
+	background-image: url("../img/congruent_outline.png");
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	/*position: relative;*/
+	margin: 0%;
+}
+#bar {
+	background-image: url("../img/footer_lodyas.png");
+	text-align: center;
+	/*border: 2px solid white;*/
+	/*overflow: visible;*/ /*Doesn't seem to make a difference? */
+	position: relative;
+	width: auto;
+	float: center;
+	height: auto;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+	/*z-index: 1;*/
+}
+#main {
+	/*height: auto;*/
+	/*z-index: 2;*/
+}
+#main div {
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("../img/footer_lodyas.png");
+	/*border: solid white 2px;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom: 1%;
+	width: 90%;
+	overflow: visible;
+	height: auto;
+	/*height: auto;*/
+	/*z-index: 3;*/
+}
+/*Now override styling from calendar div (#slot3)*/
+#main #slot3 {
+	color: #ecf0f1;
+	/*background-image: none;*/
+}
+#main #slot3 .gcf-title-block {
+	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #ecf0f1;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+#main #slot3 div{
+	font: 20px/1.6 'Kameron', Georgia, serif;
+	background-image: none;
+	-webkit-box-shadow: 0px 0px 0px 0px #a8a8a8;
+	-moz-box-shadow: 0px 0px 0px 0px #a8a8a8;
+	/*outline: 1px solid black;*/
+	margin-top: 0%;
+	margin-bottom: 0%;
+
+}
+#main form {
+	/*position: relative;*/
+	/*margin-bottom: 1%;*/
+}
+#main #slot2form {
+	color: #ecf0f1;
+	/*margin-top: 0%;*/
+	/*margin-bottom: 2%;*/
+	/*padding-top: 30%;*/
+}
+h1 {
+	font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #ecf0f1;
+	text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+h2 {
+	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #ecf0f1;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+input {
+	background: transparent; /* Maybe partially translucent grey? */
+	width: 100%;
+	text-align: center;
+	border: 0px solid transparent;
+	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+	color: #ecf0f1;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+p1 {
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("../img/footer_lodyas.png");
+	/*border: solid white 2px;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom: 1%;
+}
+form {
+	/*overflow: visible;*/
+	/*z-index: 2;*/
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom:0px;
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("../img/footer_lodyas.png");
+	/*border: solid white 2px;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+}
+#linkdiv {
+	width: 96%;
+	overflow: hidden; /* For floated elements */
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding-left: 4%;
+	/*padding-right: 4%;*/
+	border: none;
+	text-shadow: none;
+	/*margin-right: 4%;
+	margin-left: 4%;*/
+}
+#linkdiv div {
+	display: inline-block;
+    *display: inline;
+	vertical-align: top;
+	background-image: url("../img/footer_lodyas.png");
+	text-align: center;
+	/*overflow: visible;*/
+	width: 31.1%;
+	margin: 1%;
+	height: auto;
+	/*float: left;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+	/*z-index: 1;*/
+}
+#linkdiv div input {
+	text-align: center;
+	width: 50%;
+	margin: 0%;
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	color: #ecf0f1;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+#linkdiv div hr {
+	margin-top: 0%;
+	margin-bottom: 5px;
+}

@@ -24,7 +24,5 @@ This project uses a variety of resources.
 - JQuery 2.1.4
 - Google fonts Oleo Script and Kameron
 - A custom modified version of Tatsuki Sugiura's, aka sugi, JQuery Calendar plugin, ["gCalFlow"](http://sugi.github.io/jquery-gcal-flow/)
-- Images from subtlepatterns.com featuring ["Feathered"](http://subtlepatterns.com/feathered/) and ["Diagonal Waves"](http://subtlepatterns.com/diagonal-waves/)
+- Images from subtlepatterns.com featuring ["Feathered"](http://subtlepatterns.com/feathered/), ["Diagonal Waves"](http://subtlepatterns.com/diagonal-waves/), ["Dark Sharp Edges"](http://subtlepatterns.com/dark-sharp-edges/), and ["Congruent Pentagon Outline"](http://subtlepatterns.com/congruent-pentagon-outline/).
 - And eventually, Bootstrap 3.3.5
-
-
