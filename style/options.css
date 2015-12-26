@@ -46,6 +46,25 @@ body{
 	/*height: auto;*/
 	/*z-index: 3;*/
 }
+button {
+	font: 30px/1.6 'Kameron', Georgia, serif;
+	text-align: center;
+	background-image: url("../img/footer_lodyas.png");
+	/*border: solid white 2px;*/
+	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+	box-shadow: 0px 0px 8px 2px #a8a8a8;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 2%;
+	margin-bottom: 1%;
+	width: 50%;
+	overflow: visible;
+	height: auto;
+	color: #ecf0f1;
+	/*height: auto;*/
+	/*z-index: 3;*/
+}
 /*Now override styling from calendar div (#slot3)*/
 #main #slot3 {
 	color: #ecf0f1;
