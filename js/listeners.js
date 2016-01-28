@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         apikey: "AIzaSyCae639_0w0PW-L_QBlvlw2VTVNWmTtSNk",
         maxitem: 3
     });
+    chrome.storage.sync.set({'value': 12}, function() {
+        chrome.storage.sync.get("value", function(data) {
+            console.log("data", data["value"]);
+        });
+    });
+    // Now load link settings
     loadSettings();
     document.getElementById("save").addEventListener("click", function(){
         saveSettings();
@@ -17,10 +23,16 @@ $('#slot2form').submit(function(ev) {
     }, 1);
 });
 
+// Define last clicked link for use in "passing" as parameter to popup form
+var lastClickedLink;
+
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
-        alert("You've tried to open context menu"); //here you draw your own menu
+        // alert("You've tried to open context menu"); //here you draw your own menu
+        lastClickedLink = e.path[0];
+        console.log(lastClickedLink);
         e.preventDefault();
+        $("#btn-link").click();
     }, false);
 } else {
     document.attachEvent('oncontextmenu', function() {
@@ -43,8 +55,12 @@ $('#popupform1').PopupForm({
         }
     },
     submitted: function() {
-        console.log('Form just submitted.');
-        // Link swap goes here
+        // Now swap link address
+        lastClickedLink.setAttribute("href", $("#link-address").val());
+        // Swap title, if given
+        if($('#link-title').val().length > 0) {
+            lastClickedLink.text = $("#link-title").val();
+        }
     },
     submitSuccess: function(data) {
         console.log('Form submitted successfully.')
