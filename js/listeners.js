@@ -5,15 +5,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         apikey: "AIzaSyCae639_0w0PW-L_QBlvlw2VTVNWmTtSNk",
         maxitem: 3
     });
-    chrome.storage.sync.set({'value': 12}, function() {
-        chrome.storage.sync.get("value", function(data) {
-            console.log("data", data["value"]);
-        });
-    });
     // Now load link settings
-    loadSettings();
+    setTimeout(function() {
+        loadSettings();
+    }, 100);
     document.getElementById("save").addEventListener("click", function(){
         saveSettings();
+        loadSettings();
     });
 });
 
@@ -24,15 +22,18 @@ $('#slot2form').submit(function(ev) {
 });
 
 // Define last clicked link for use in "passing" as parameter to popup form
-var lastClickedLink;
+var lastClickedLinkAddress;
+var lastClickedLinkTitle;
 
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
-        // alert("You've tried to open context menu"); //here you draw your own menu
-        lastClickedLink = e.path[0];
-        console.log(lastClickedLink);
-        e.preventDefault();
-        $("#btn-link").click();
+        // Context menu tried to open, so lets stop it and instead reconfigure a link
+        // But let's only let it work on anchors
+        if ('A' == e.path[0].tagName) {
+            e.preventDefault();
+            lastClickedLink = e.path[0];
+            $("#btn-link").click(); // Open the popup now
+        }
     }, false);
 } else {
     document.attachEvent('oncontextmenu', function() {

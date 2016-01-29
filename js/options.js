@@ -5,12 +5,23 @@ function saveSettings() {
         var id = "#l" + i.toString()
         var linkid = "l" + i.toString() + "link";
         var titleid = "l" + i.toString() + "title";
-        // Now save in these keys
-        chrome.storage.local.set({linkid: $(id).attr("href")}, function () {
-            console.log("Saved " + linkid + " " + $(id).attr("href"));
+        // Prepare to save in these dicts
+        var saveLink = {}
+        save[linkid] = $(id).attr("href");
+        var saveTitle = {}
+        saveTitle[titleid] = $(id).html();
+        // Save in chrome.storage
+        chrome.storage.sync.set(saveLink, function () {
+            chrome.storage.sync.get(linkid, function (result) {
+                console.log("save: ");
+                console.log(result[linkid])
+            });
         });
-        chrome.storage.local.set({titleid: $(id).innerHTML}, function () {
-            console.log("Saved " + titleid);
+        chrome.storage.sync.set(saveTitle, function () {
+            chrome.storage.sync.get(titleid, function (result) {
+                console.log("save: ");
+                console.log(result[titleid])
+            });
         });
 
     }
@@ -23,24 +34,17 @@ function loadSettings() {
         var linkid = "l" + i.toString() + "link";
         var titleid = "l" + i.toString() + "title";
         // Load from these keys
-        chrome.storage.local.get(linkid, function (result) {
-            // Set the link now
-            console.log(result)
+        chrome.storage.sync.get(linkid, function (result) {
+            // Update the link now
+            console.log("Loaded: ");
             console.log(result[linkid])
             $(id).attr("href", result[linkid])
         });
-        chrome.storage.local.get(titleid, function (result) {
+        chrome.storage.sync.get(titleid, function (result) {
             // Set the title now
-            $(id).innerHTML = result;
+            console.log("Loaded: ");
+            console.log(result[titleid]);
+            $(id).innerHTML = result[titleid];
         });
     }
-    // for (i = 0; i < a.length; i++) {
-    //     select = $(a[i]);
-    //     var link = localStorage[links[i]];
-    //     if (link.indexOf("http://") <= -1){
-    //         link = "http://"+link;
-    //     }
-    //     select.prop("href", link);
-    //     select.text(localStorage[labels[i]]);
-    // }
 }

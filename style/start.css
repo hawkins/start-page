@@ -1,16 +1,14 @@
-body{
+html, body{
 	background-image: url("../img/upfeathers.png");
-	/*overflow: hidden;*/
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	/*position: relative;*/
+	position: relative;
 	margin: 0%;
 }
 #bar {
 	background-image: url("../img/diagonal_waves.png");
 	text-align: center;
-	/*border: 2px solid white;*/
-	/*overflow: visible;*/ /*Doesn't seem to make a difference? */
 	position: relative;
 	width: auto;
 	float: center;
@@ -22,7 +20,6 @@ body{
 	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
 	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
 	box-shadow: 0px 0px 8px 2px #a8a8a8;
-	/*z-index: 1;*/
 }
 #main {
 	/*height: auto;*/
@@ -159,4 +156,10 @@ form {
 #linkdiv div hr {
 	margin-top: 0%;
 	margin-bottom: 5px;
+}
+#save {
+	position: fixed;
+	z-index: 903;
+	left: 1%;
+	top: 95%;
 }
