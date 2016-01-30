@@ -47,7 +47,6 @@ $('#popupform1').PopupForm({
     formTitle: 'Edit Quick Link',
 
     validateStepOne: function (container) {
-        // Or used validation plugin: http://jqueryvalidation.org/
         if($('#link-address').val().length > 0) {
             return true;
         } else {
@@ -62,6 +61,7 @@ $('#popupform1').PopupForm({
         if($('#link-title').val().length > 0) {
             lastClickedLink.text = $("#link-title").val();
         }
+        saveSettings(); // Update settings saved in chrome.storage
     },
     submitSuccess: function(data) {
         console.log('Form submitted successfully.')
