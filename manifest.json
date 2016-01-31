@@ -1,7 +1,7 @@
 {
   "name": "Simple Start Page",
   "description": "Replace new tab page with a simple start page",
-  "version": "0.3",
+  "version": "1.0",
   "author": "Josh Hawkins",
   "incognito": "split",
   "permissions": [
