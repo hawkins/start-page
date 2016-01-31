@@ -1,7 +1,10 @@
+![Promo graphic](/img/fav/ms-icon-150x150.png)![Promo graphic](/img/promotile.png)
 # start-page
-a basic start page for web browsers
+A simple start page for web browsers.
 
-This is a basic html page to be loaded as a start page in any web browser.
+This is a basic chrome extension which provides a start page, replacing the stock new tab page.
+
+![Screenshot](/img/screenshot.png)
 
 ## Features
 - Google Calendar
@@ -15,7 +18,7 @@ To setup, check out [Simple Start Page](https://chrome.google.com/webstore/detai
 And that's it, you're done!
 
 ### Contributing
-I welcome pull requests with open arms. If you have suggestions, feel free to create an ["Issue"](https://github.com/hawkins/start-page/issues/new). If you'd like to contribute code, [fork the repository](https://github.com/hawkins/start-page#fork-destination-box) and submit a pull request of your changes.
+I welcome all types of contributions. If you have suggestions, feel free to create an ["Issue"](https://github.com/hawkins/start-page/issues/new). If you'd like to contribute code, [fork the repository](https://github.com/hawkins/start-page#fork-destination-box) and submit a pull request of your changes.
 
 ### Resources
 This project uses a variety of resources.
