@@ -59,16 +59,16 @@ function loadSettings() {
         chrome.storage.sync.get(linkid, function (result) {
             // Update the link now
             for (linkid in result) {
-                console.log("Loaded: ");
-                console.log(result[linkid]);
+                // console.log("Loaded: ");
+                // console.log(result[linkid]);
                 $("#"+linkRe.exec(linkid)).attr("href", result[linkid]);
             };
         });
         chrome.storage.sync.get(titleid, function (result) {
             // Set the title now
             for (titleid in result) {
-                console.log("Loaded: ");
-                console.log(result[titleid]);
+                // console.log("Loaded: ");
+                // console.log(result[titleid]);
                 $("#"+linkRe.exec(linkid)).text(result[titleid]);
             };
         });
