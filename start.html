@@ -27,22 +27,22 @@
     <script type="text/javascript" src="calendar.json"></script> <!-- Calendar Configuration JSON File -->
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="img/fav/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/fav/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/fav/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/fav/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/fav/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/fav/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/fav/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/fav/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/fav/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/fav/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/fav/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/fav/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/fav/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/fav/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/fav/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/fav/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/fav/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/fav/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/fav/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/img/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/fav/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/img/fav/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
     <title>Start Page</title>
@@ -62,7 +62,7 @@
         <!-- <div id="slot2"> -->
             <!-- This appears as a div to the user -->
             <form id="slot2form" method="get" action="http://www.google.com/search" target="_blank" onsubmit="closetab()">
-                <input id="slot2input" name="q" type="text" class="search" placeholder="> . . ." autofocus></input>
+                <input id="slot2input" name="q" type="text" autocomplete="off" class="search" placeholder="Search with Google" autofocus></input>
                 <!-- Load javascript here, auto focus on page load. Simple google search for now.
                 Eventually, this will incorporate reddit and github searches with some string tag.
                 "-gh" or "-github", "-r" or "-reddit"
@@ -71,7 +71,7 @@
         <!-- </div> -->
 
         <div id="slot3" class="gCalFlow">
-            Google calendar is loading...
+            Right-click here to easily set up Google Calendar.
         </div>
     </div>
     <div id="linkdiv">
@@ -108,9 +108,10 @@
         </div>
     </div>
 
-    <button id="save">Save</button>
-    <button id="btn-link" style="display:None">Test popup form</button>
-    <form action="/popup-form-example.html" id="popupform1" class="popup-form" method="get" >
+    <!-- Popups -->
+    <!-- Quick Link Configuration -->
+    <button id="btn-link" style="display:None">Open link configure</button>
+    <form id="popupform1" class="popup-form" method="get" >
         <div class="steps-popup">
             <div class="step-one-popup active-step-popup">1</div>
         </div>
@@ -121,6 +122,22 @@
                 <label for="link-title">Link Name (optional)</label>
                 <input id="link-title" type="text" name="link-title" autocomplete="off">
                 <button class="button-popup-form highlight-button-popup-form">Save Link</button>
+            </div>
+        </div>
+    </form>
+    <!-- Google Calendar Configuration -->
+    <button id="btn-calendar" style="display:None">Open calendar configure</button>
+    <form id="popupform2" class="popup-form" method="get" >
+        <div class="steps-popup">
+            <div class="step-one-popup active-step-popup">1</div>
+        </div>
+        <div class="steps-container-popup">
+            <div class="step-one-container-popup">
+                <label for="calendar-id">Google Calendar ID</label>
+                <input id="calendar-id" type="text" name="calendar-id" autocomplete="off">
+                <p>Not sure what this is?</p>
+                <a href="https://github.com/hawkins/start-page/wiki/Set-Up-Google-Calendar">Click here for more instruction.</a>
+                <button class="button-popup-form highlight-button-popup-form">Save Setting</button>
             </div>
         </div>
     </form>

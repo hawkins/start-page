@@ -1,18 +1,47 @@
+var calConfig;
+// hasClass is from http://stackoverflow.com/questions/5898656/test-if-an-element-contains-a-class
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
 document.addEventListener("DOMContentLoaded", function(event) {
     $('#slot2input').focus();
-    $('#slot3').gCalFlow({
-        calid: calConfig.calid,
-        apikey: "AIzaSyCae639_0w0PW-L_QBlvlw2VTVNWmTtSNk",
-        maxitem: 3
+
+    //// Read Google Calendar
+    // Load Google Calendar ID from chrome.storage
+    chrome.storage.sync.get("calConfig", function (result) {
+        for (key in result) {
+            calConfig = result[key];
+            $('#calendar-id').val(calConfig);
+        };
+        // If we found calConfig, set up gCalFlow
+        if (!calConfig) {
+            // Open the popup to set up calendar
+            $('#btn-calendar').click();
+        } else {
+            // Configure Google calendar
+            $('#slot3').gCalFlow({
+                calid: calConfig,
+                apikey: "AIzaSyCae639_0w0PW-L_QBlvlw2VTVNWmTtSNk",
+                maxitem: 3
+            });
+        }
+    });
+
+
+    //// Check for first-time setup
+    // Check whether new version is installed
+    chrome.runtime.onInstalled.addListener(function(details){
+        if(details.reason == "install"){
+            console.log("Thank you so much for installing my simple start page Chrome extension! :) -hawkins");
+            $('#btn-calendar').click();
+        }else if(details.reason == "update"){
+            var thisVersion = chrome.runtime.getManifest().version;
+            console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
+            console.log("Thanks so much for your continued support!! :) -hawkins");
+        }
     });
     // Now load link settings
-    setTimeout(function() {
-        loadSettings();
-    }, 100);
-    document.getElementById("save").addEventListener("click", function(){
-        saveSettings();
-        loadSettings();
-    });
+    loadSettings();
 });
 
 $('#slot2form').submit(function(ev) {
@@ -31,8 +60,20 @@ if (document.addEventListener) {
         // But let's only let it work on anchors
         if ('A' == e.path[0].tagName) {
             e.preventDefault();
+            console.log(e.path[0]);
+            if (hasClass(e.path[0].parentElement, "gcf-title")) {
+                // Open the popup to set up calendar
+                $('#btn-calendar').click();
+                return;
+            }
+            // Since we're not a descendent of slot3, open link configuration
             lastClickedLink = e.path[0];
-            $("#btn-link").click(); // Open the popup now
+            // Load the link's href and text into the popup
+            console.log(lastClickedLink);
+            $("#link-title").val(lastClickedLink.innerHTML);
+            $("#link-address").val(lastClickedLink.href);
+            // Now open the popup
+            $("#btn-link").click();
         }
     }, false);
 } else {
@@ -42,6 +83,7 @@ if (document.addEventListener) {
     });
 }
 
+// Quick Link Configuration
 $('#popupform1').PopupForm({
     openPopupButton: $('#btn-link')[0],
     formTitle: 'Edit Quick Link',
@@ -71,5 +113,37 @@ $('#popupform1').PopupForm({
     },
     closed: function() {
         console.log('Form closed.')
+    }
+});
+// Google Calendar Configuration
+$('#popupform2').PopupForm({
+    openPopupButton: $('#btn-calendar')[0],
+    formTitle: 'Edit Google Calendar',
+
+    validateStepOne: function (container) {
+        if($('#calendar-id').val().length > 0) {
+            return true;
+        } else {
+            alert('Google Calendar ID is a required field');
+            return false;
+        }
+    },
+    submitted: function() {
+        // Save the calendar ID in chrome.storage
+        var calConfig = $('#calendar-id').val();
+        chrome.storage.sync.set({"calConfig": calConfig}, function() {
+            console.log("Saved calendar to chrome.storage.");
+            $('#calendar-id').val(calConfig);
+        });
+    },
+    submitSuccess: function(data) {
+        console.log('Form submitted successfully.')
+    },
+    submitFailed: function(xhr) {
+        console.log('Form submit failed.')
+    },
+    closed: function() {
+        console.log('Form closed.')
+        $('#calendar-id').val(calConfig);
     }
 });

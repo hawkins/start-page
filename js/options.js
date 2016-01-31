@@ -8,6 +8,10 @@ function saveSettings() {
         var linkid = "l" + i.toString() + "link";
         var titleid = "l" + i.toString() + "title";
         // Write in these dicts
+        // Ensure http:// is in links
+        if ($(id).attr("href").indexOf("http://") < 0 && $(id).attr("href").indexOf("https://") < 0 ) {
+            $(id).attr("href", "http://"+$(id).attr("href"));
+        }
         saveLinks[linkid] = $(id).attr("href");
         saveTitles[titleid] = $(id).html();
 
@@ -60,16 +64,16 @@ function loadSettings() {
         chrome.storage.sync.get(linkid, function (result) {
             // Update the link now
             for (linkid in result) {
-                console.log("Loaded: ");
-                console.log(result[linkid]);
+                // console.log("Loaded: ");
+                // console.log(result[linkid]);
                 $("#"+re.exec(linkid)).attr("href", result[linkid]);
             };
         });
         chrome.storage.sync.get(titleid, function (result) {
             // Set the title now
             for (titleid in result) {
-                console.log("Loaded: ");
-                console.log(result[titleid]);
+                // console.log("Loaded: ");
+                // console.log(result[titleid]);
                 $("#"+re.exec(linkid)).text(result[titleid]);
             };
         });
