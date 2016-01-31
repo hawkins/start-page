@@ -18,7 +18,6 @@
       "148": "img/fav/android-icon-48x48.png",
       "192": "img/fav/android-icon-192x192.png"
   },
-  "options_page": "options.html",
 
   "content_security_policy": "script-src 'self' https://www.googleapis.com/; object-src 'self'",
   "manifest_version": 2
