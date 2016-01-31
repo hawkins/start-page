@@ -1,10 +1,13 @@
-![Promo graphic](/img/fav/ms-icon-150x150.png)![Promo graphic](/img/promotile.png)
+![Promo graphic](/img/fav/ms-icon-150x150.png)
+
+![Promo graphic2](/img/promotile.png)
+
 # start-page
 A simple start page for web browsers.
 
 This is a basic chrome extension which provides a start page, replacing the stock new tab page.
 
-![Screenshot](/img/screenshot.png)
+![Screenshot](/img/screenshot.PNG)
 
 ## Features
 - Google Calendar
