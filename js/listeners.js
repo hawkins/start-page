@@ -73,12 +73,20 @@ if (document.addEventListener) {
         // Context menu tried to open, so lets stop it and instead reconfigure a link
         // But let's only let it work on anchors
         if ('A' == e.path[0].tagName) {
-            e.preventDefault();
-            // console.log(e.path[0]);
+            // Check if we clicked the GCF Title
             if (hasClass(e.path[0].parentElement, "gcf-title")) {
                 // Open the popup to set up calendar
+                e.preventDefault();
                 $('#btn-calendar').click();
                 return;
+            }
+            // If this is not a grandchild of linkdiv
+            if (e.path[0].parentElement.parentElement.id != "linkdiv") {
+                // Then do nothing
+                return;
+            } else {
+                console.log(e.path[0].parentElement.parentElement.id)
+                e.preventDefault();
             }
             // Since we're not a descendent of slot3, open link configuration
             lastClickedLink = e.path[0];
