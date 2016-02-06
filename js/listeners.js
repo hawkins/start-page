@@ -71,7 +71,12 @@ var lastClickedHeader;
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         // Context menu tried to open, so lets stop it and instead reconfigure a link
-        // But let's only let it work on anchors
+        // But let's only let it work on specific parts of the page
+        if ('slot3' == e.path[0].id) {
+            e.preventDefault();
+            $('#btn-calendar').click();
+            return;
+        }
         if ('A' == e.path[0].tagName) {
             // Check if we clicked the GCF Title
             if (hasClass(e.path[0].parentElement, "gcf-title")) {
