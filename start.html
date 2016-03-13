@@ -47,32 +47,25 @@
     <title>Start Page</title>
 </head>
 <body>
+    <!-- Title bar -->
     <div id="bar" class="bar-shadow">
         <h1>Start Page</h1>
     </div>
 
+    <!-- Main page -->
     <div id="main">
-        <!-- <div id="slot1">
-            <p1 id="slot1p">
-                What goes here?
-            </p>
-        </div> -->
+        <!-- Search Bar -->
+        <form id="searchform" method="get" action="http://www.google.com/search" target="_blank">
+            <input id="searchinput" name="q" type="text" autocomplete="off" class="search" placeholder="Search with Google" autofocus></input>
+        </form>
 
-        <!-- <div id="slot2"> -->
-            <!-- This appears as a div to the user -->
-            <form id="slot2form" method="get" action="http://www.google.com/search" target="_blank" onsubmit="closetab()">
-                <input id="slot2input" name="q" type="text" autocomplete="off" class="search" placeholder="Search" autofocus></input>
-                <!-- Load javascript here, auto focus on page load. Simple google search for now.
-                Eventually, this will incorporate reddit and github searches with some string tag.
-                "-gh" or "-github", "-r" or "-reddit"
-                "-sr" load a specific subreddit -->
-            </form>
-        <!-- </div> -->
-
-        <div id="slot3" class="gCalFlow">
+        <!-- Google Calendar -->
+        <div id="calendar" class="gCalFlow">
             Right-click here to set up Google Calendar.
         </div>
     </div>
+
+    <!-- Quick-links -->
     <div id="linkdiv">
         <div id="School">
             <h2 id="header1">School</h2><hr>
@@ -103,10 +96,17 @@
             <a id="l11" href="https://www.instagram.com/?hl=en">Instagram</a>
             <br>
             <a id="l12" href="http://linkedin.com">LinkedIn</a>
-
         </div>
     </div>
 
+    <!-- Signature -->
+    <p id="sig">
+        made by
+        <br>
+        <a href="https://www.github.com/hawkins">Hawkins</a>
+    </p>
+
+    <!-- End of typically-visible page -->
     <!-- Popups -->
     <!-- Quick Link Configuration -->
     <button id="btn-link" style="display:None">Open link configure</button>
@@ -126,7 +126,7 @@
     </form>
     <!-- Google Calendar Configuration -->
     <button id="btn-calendar" style="display:None">Open calendar configuration</button>
-    <form id="popupform2" class="popup-form" method="get" >
+    <form id="popupform2" class="popup-form" method="get">
         <div class="steps-popup">
             <div class="step-one-popup active-step-popup">1</div>
         </div>
@@ -143,7 +143,7 @@
     </form>
     <!-- Header Label Configuration -->
     <button id="btn-header" style="display:None">Open header configuration</button>
-    <form id="popupform3" class="popup-form" method="get" >
+    <form id="popupform3" class="popup-form" method="get">
         <div class="steps-popup">
             <div class="step-one-popup active-step-popup">1</div>
         </div>

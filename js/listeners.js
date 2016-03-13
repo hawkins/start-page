@@ -13,15 +13,15 @@ function loadCalendar(calid, numberEvents) {
         numberEvents = 3;
     }
     // Load the calendar now
-    $('#slot3').gCalFlow({
+    $('#calendar').gCalFlow({
         calid: calid,
         apikey: "AIzaSyCae639_0w0PW-L_QBlvlw2VTVNWmTtSNk",
         maxitem: numberEvents
     });
 }
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("Hey developers! If you're interested to contribute, I gladly accept pull requests at https://github.com/hawkins/start-page/ ! :) -hawkins")
-    $('#slot2input').focus();
+    console.log("Hey developers! If you're interested to contribute, I love to see pull requests at https://github.com/hawkins/start-page/ ! :) -hawkins")
+    $('#searchinput').focus();
 
     //// Read Google Calendar
     // Load Google Calendar ID from chrome.storage
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadSettings();
 });
 
-$('#slot2form').submit(function(ev) {
+$('#searchform').submit(function(ev) {
     setTimeout(function() {
         close();
     }, 1);
@@ -72,7 +72,7 @@ if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         // Context menu tried to open, so lets stop it and instead reconfigure a link
         // But let's only let it work on specific parts of the page
-        if ('slot3' == e.path[0].id) {
+        if ('calendar' == e.path[0].id) {
             e.preventDefault();
             $('#btn-calendar').click();
             return;
@@ -93,7 +93,7 @@ if (document.addEventListener) {
                 console.log(e.path[0].parentElement.parentElement.id)
                 e.preventDefault();
             }
-            // Since we're not a descendent of slot3, open link configuration
+            // Since we're not a descendent of calendar, open link configuration
             lastClickedLink = e.path[0];
             // Load the link's href and text into the popup
             // console.log(lastClickedLink);

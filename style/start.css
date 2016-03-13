@@ -1,149 +1,207 @@
+/*Global styles or if in small window:*/
 html, body{
-	background-image: url("../img/upfeathers.png");
-	/*overflow: hidden;*/
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	/*margin: 0%;*/
+    background-image: url("../img/upfeathers.png");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+#bar,
+#slot1,
+#searchform,
+#searchinput,
+#calendar,
+#main,
+#main div,
+#linkdiv,
+#linkdiv div {
+    z-index: 10;
+}
+#sigdiv,
+#sig {
+    z-index: 0;
 }
 #bar {
-	background-image: url("../img/diagonal_waves.png");
-	text-align: center;
-	position: relative;
-	width: auto;
-	height: auto;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 3%;
-	margin-bottom: 2%;
-	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	box-shadow: 0px 0px 8px 2px #a8a8a8;
+    background-image: url("../img/diagonal_waves.png");
+    text-align: center;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    -webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    -moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    box-shadow: 0px 0px 8px 2px #a8a8a8;
 }
 #main div {
-	font: 30px/1.6 'Kameron', Georgia, serif;
-	text-align: center;
-	background-image: url("../img/diagonal_waves.png");
-	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	box-shadow: 0px 0px 8px 2px #a8a8a8;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 2%;
-	margin-bottom: 1%;
-	width: 90%;
-	overflow: visible;
-	height: auto;
+    font: 30px/1.6 'Kameron', Georgia, serif;
+    text-align: center;
+    background-image: url("../img/diagonal_waves.png");
+    -webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    -moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    box-shadow: 0px 0px 8px 2px #a8a8a8;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    width: 90%;
+    overflow: visible;
+    height: auto;
 }
-#main #slot3 .gcf-title-block {
-	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
-	color: #2b2b2b;
-	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+#main #calendar .gcf-title-block {
+    font: 200 30px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
-#main #slot3 div{
-	font: 20px/1.6 'Kameron', Georgia, serif;
-	background-image: none;
-	-webkit-box-shadow: 0px 0px 0px 0px #a8a8a8;
-	-moz-box-shadow: 0px 0px 0px 0px #a8a8a8;
-	margin-top: 0%;
-	margin-bottom: 0%;
+#main #calendar div{
+    font: 15px/1.6 'Kameron', Georgia, serif;
+    background-image: none;
+    -webkit-box-shadow: 0px 0px 0px 0px #a8a8a8;
+    -moz-box-shadow: 0px 0px 0px 0px #a8a8a8;
+    margin-top: 0%;
+    margin-bottom: 0%;
 
 }
-h1 {
-	font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
-	color: #2b2b2b;
-	text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
-}
-h2 {
-	font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
-	color: #2b2b2b;
-	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-}
-p1 {
-	font: 30px/1.6 'Kameron', Georgia, serif;
-	text-align: center;
-	background-image: url("../img/diagonal_waves.png");
-	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	box-shadow: 0px 0px 8px 2px #a8a8a8;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 2%;
-	margin-bottom: 1%;
-}
-input {
-	background: transparent;
-	width: 100%;
-	text-align: center;
-	border: 0px solid transparent;
-}
-form {
-	width: 90%;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 2%;
-	margin-bottom:0px;
-	font: 30px/1.6 'Kameron', Georgia, serif;
-	text-align: center;
-	background-image: url("../img/diagonal_waves.png");
-	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	box-shadow: 0px 0px 8px 2px #a8a8a8;
-}
 #linkdiv {
-	width: 96%;
-	overflow: hidden;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	padding-left: 4%;
-	border: none;
-	text-shadow: none;
+    position: relative;
+    width: 96%;
+    overflow: hidden;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 4%;
+    border: none;
+    text-shadow: none;
 }
 #linkdiv div {
-	display: inline-block;
-    *display: inline;
-	vertical-align: top;
-	background-image: url("../img/diagonal_waves.png");
-	text-align: center;
-	width: 31.1%;
-	margin: 1%;
-	height: auto;
-	-webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	-moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
-	box-shadow: 0px 0px 8px 2px #a8a8a8;
+    float: left;
+    position: relative;
+    vertical-align: top;
+    background-image: url("../img/diagonal_waves.png");
+    text-align: center;
+    width: calc((100% - 6%) / 3);
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 0%;
+    height: auto;
+    -webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    -moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    box-shadow: 0px 0px 8px 2px #a8a8a8;
+}
+#linkdiv #development,
+#linkdiv #entertainment {
+    /*Essentially #linkdiv div and NOT #school*/
+    margin-left: 2%;
 }
 #linkdiv div h2 {
-	margin: 0%;
+    margin: 0%;
 }
 #linkdiv div a {
-	font: 20px/1.6 'Kameron', Georgia, serif;
-	text-align: center;
-	color: #333333;
+    font: 15px/1.6 'Kameron', Georgia, serif;
+    text-align: center;
+
+    color: #333333;
 }
 #linkdiv div hr {
-	margin-top: 0%;
-	margin-bottom: 5px;
+    margin-top: 0%;
+    margin-bottom: 5px;
 }
-#save {
-	position: fixed;
-	z-index: 903;
-	left: 1%;
-	top: 95%;
+#sigdiv {
+    position: fixed;
+    background-image: none !important;
+    box-shadow: none !important;
 }
-::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
-    background: #a8a8a8;
+#sig {
+    position: fixed;
+    display: none; /*hidden until height large enough*/
+    font: 14px/1.6 'Kameron', Georgia, serif;
+    text-align: right;
+    float: left;
+    right: 5%;
+    bottom: 0%;
 }
-::-webkit-scrollbar-thumb {
-	background: #ECECEC;
-    -webkit-border-radius: 1ex;
-    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+h1 {
+    font: 400 75px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
 }
-::-webkit-scrollbar-corner {
-    background: #a8a8a8;
+h2 {
+    font: 200 30px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+p1 {
+    font: 24px/1.6 'Kameron', Georgia, serif;
+    text-align: center;
+    background-image: url("../img/diagonal_waves.png");
+    -webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    -moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    box-shadow: 0px 0px 8px 2px #a8a8a8;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+input {
+    background: transparent;
+    width: 100%;
+    text-align: center;
+    border: 0px solid transparent;
+}
+form {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom:0px;
+    font: 24px/1.6 'Kameron', Georgia, serif;
+    text-align: center;
+    background-image: url("../img/diagonal_waves.png");
+    -webkit-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    -moz-box-shadow: 0px 0px 8px 2px #a8a8a8;
+    box-shadow: 0px 0px 8px 2px #a8a8a8;
+}
+
+/*Only show signature if tall enough*/
+@media screen and (max-width: 700px) and (min-height: 500px) {
+    #sig {
+        display:inline;
+    }
+}
+@media screen and (min-width: 700px) and (min-height: 600px) {
+    #sig {
+        display:inline;
+    }
+}
+
+/*If not in small window:*/
+@media screen and (min-width: 700px) {
+    #main #calendar .gcf-title-block {
+        font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+    }
+    #main #calendar div {
+        font: 20px/1.6 'Kameron', Georgia, serif;
+    }
+    #sig {
+        font: 16px/1.6 'Kameron', Georgia, serif;
+    }
+    h1 {
+        font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
+    }
+    h2 {
+        font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+    }
+    p1 {
+        font: 30px/1.6 'Kameron', Georgia, serif;
+    }
+    form {
+        font: 30px/1.6 'Kameron', Georgia, serif;
+    }
+    #linkdiv div a {
+        font: 20px/1.6 'Kameron', Georgia, serif;
 }
