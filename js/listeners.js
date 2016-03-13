@@ -1,4 +1,12 @@
+//// Define global variables
+// Calendar config
 var calConfig;
+// Define last clicked link for use in "passing" as parameter to popup form
+var lastClickedLinkAddress;
+var lastClickedLinkTitle;
+var lastClickedHeader;
+
+//// Define Helper Functions
 // hasClass is from http://stackoverflow.com/questions/5898656/test-if-an-element-contains-a-class
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
@@ -19,6 +27,80 @@ function loadCalendar(calid, numberEvents) {
         maxitem: numberEvents
     });
 }
+// Shorten link addresses
+function shortenLink(link, MAX_LENGTH) {
+    // Define a maximum length of link
+    if (MAX_LENGTH == null) {
+        MAX_LENGTH = 32;
+    }
+    // Remove prefixes
+    var removals = ["http://", "https://", "www."];
+    var i = 0;
+    for (i = 0; i < removals.length; i++) {
+        var current = removals[i];
+        if (link.indexOf(current) > -1) {
+            link = link.substring(link.indexOf(current) + current.length);
+        }
+    }
+    //// Remove all but last suffix
+    // Test with regex
+    var re = /\/([^\/])*\/([^\/])*\//;
+    if (re.test(link)) {
+        // URL can be shortened
+        // Remove trailing '/'
+        if (link[link.length-1] == '/') {
+            link = link.substring(0, link.length - 1);
+        }
+        // Define variables
+        var set = link.split("/");
+        var max = set.length - 1;
+        var done = 0;
+        var index = 1;
+        console.log("Set:" + set);
+        // Reduce the URL until short enough or out of options
+        while (done == 0) {
+            // Assemble URL
+            link = set.join("/");
+            if (link.length <= MAX_LENGTH) {
+                // URL is short enough
+                done = 1;
+            } else {
+                // URL is too long
+                if (index < max) {
+                    // Reduce a segment
+                    set[index++] = "...";
+                } else {
+                    // Out of segments to reduce! Break but leave done at 0
+                    break;
+                }
+            }
+        }
+        // Further reduce URL if necessary
+        index = 1;
+        max -= 1;
+        while (done == 0) {
+            // Assemble URL
+            link = set.join("/");
+            if (link.length <= MAX_LENGTH) {
+                // URL is short enough
+                done = 1;
+            } else {
+                // URL is too long
+                if (index < max) {
+                    // Remove a segment
+                    set.splice(index++, 1);
+                } else {
+                    // Out of segments to remove!!
+                    break;
+                }
+            }
+        }
+    }
+    return link;
+}
+
+//// Begin listeners
+// Document on load
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("Hey developers! If you're interested to contribute, I love to see pull requests at https://github.com/hawkins/start-page/ ! :) -hawkins")
     $('#searchinput').focus();
@@ -57,16 +139,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadSettings();
 });
 
+// Search on submit
 $('#searchform').submit(function(ev) {
     setTimeout(function() {
         close();
     }, 1);
 });
-
-// Define last clicked link for use in "passing" as parameter to popup form
-var lastClickedLinkAddress;
-var lastClickedLinkTitle;
-var lastClickedHeader;
 
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
@@ -135,6 +213,8 @@ $('#popupform1').PopupForm({
         // Swap title, if given
         if($('#link-title').val().length > 0) {
             lastClickedLink.text = $("#link-title").val();
+        } else {
+            lastClickedLink.text = shortenLink($("#link-address").val());
         }
         saveSettings(); // Update settings saved in chrome.storage
     },
