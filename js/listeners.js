@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // If we found calConfig, set up gCalFlow
             if (!calConfig) {
                 // Open the popup to set up calendar
-                $('#btn-calendar').click();
+                // $('#btn-calendar').click();
             } else {
                 // Configure Google calendar
                 loadCalendar();
@@ -125,18 +125,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     // If failed (because not in Chrome Extension), load from local storage
     catch (err) {
-        var result = localStorage["calConfig"];
-        for (key in result) {
-            calConfig = result[key];
-            $('#calendar-id').val(calConfig);
-        };
+        var calConfig = localStorage["calConfig"];
+        console.log("Loaded calendar ID:" + calConfig);
+        $('#calendar-id').val(calConfig);
         // If we found calConfig, set up gCalFlow
         if (!calConfig) {
-            // Open the popup to set up calendar
-            $('#btn-calendar').click();
+            // Open the calendar setup popup
+            // $('#btn-calendar').click();
         } else {
             // Configure Google calendar
-            loadCalendar();
+            loadCalendar(calConfig);
         }
     }
 
