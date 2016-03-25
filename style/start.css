@@ -104,17 +104,11 @@ html, body{
 #linkdiv div a {
     font: 15px/1.6 'Kameron', Georgia, serif;
     text-align: center;
-
     color: #333333;
 }
 #linkdiv div hr {
     margin-top: 0%;
     margin-bottom: 5px;
-}
-#sigdiv {
-    position: fixed;
-    background-image: none !important;
-    box-shadow: none !important;
 }
 #sig {
     position: fixed;
@@ -124,6 +118,11 @@ html, body{
     float: left;
     right: 5%;
     bottom: 0%;
+    color: #333333;
+}
+#sig a {
+    font-family: 'Oleo Script', Helvetica, sans-serif;
+    color: #333333;
 }
 #notice {
     position: fixed;

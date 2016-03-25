@@ -106,8 +106,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('#searchinput').focus();
 
     //// Read Google Calendar
-    // Load Google Calendar ID from chrome.storage
-    chrome.storage.sync.get("calConfig", function (result) {
+    // Try to load Google Calendar ID from chrome.storage
+    try {
+        chrome.storage.sync.get("calConfig", function (result) {
+            for (key in result) {
+                calConfig = result[key];
+                $('#calendar-id').val(calConfig);
+            };
+            // If we found calConfig, set up gCalFlow
+            if (!calConfig) {
+                // Open the popup to set up calendar
+                $('#btn-calendar').click();
+            } else {
+                // Configure Google calendar
+                loadCalendar();
+            }
+        });
+    }
+    // If failed (because not in Chrome Extension), load from local storage
+    catch (err) {
+        var result = localStorage["calConfig"];
         for (key in result) {
             calConfig = result[key];
             $('#calendar-id').val(calConfig);
@@ -120,28 +138,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // Configure Google calendar
             loadCalendar();
         }
-    });
+    }
+
 
 
     //// Check for first-time setup
     // Check whether new version is installed
-    chrome.runtime.onInstalled.addListener(function(details){
-        if(details.reason == "install"){
-            console.log("Thank you so much for installing my simple start page Chrome extension! :) -hawkins");
-            $('#btn-calendar').click();
-        } else if(details.reason == "update") {
+    try {
+        chrome.runtime.onInstalled.addListener(function(details){
             var thisVersion = chrome.runtime.getManifest().version;
-            // Build strings
-            var updateNotice = "Updated from " + details.previousVersion + " to " + thisVersion + "!";
-            var continuedSupport = "Thanks so much for your continued support!! :) -Hawkins";
-            var noticeBoardStatus = updateNotice.concat("<br>").concat(continuedSupport);
-            // Log updates in console
-            console.log(updateNotice);
-            console.log(continuedSupport);
-            // Write update notice to #notice
-            document.getElementById("notice").innerHTML = noticeBoardStatus;
-        }
-    });
+            if (details.reason == "install"){
+                // Build strings
+                var installationNotice = "Thank you so much for supporting my simple start page Chrome extension! :) -hawkins";
+                var currentVersionNotice = "You've just installed version " + thisVersion;
+                var noticeBoardStatus = installationNotice.concat("<br>").concat(currentVersionNotice);
+                // Log installation notices to console
+                console.log(installationNotice);
+                console.log(currentVersionNotice);
+                // Write update notice to #notice
+                document.getElementById("notice").innerHTML = noticeBoardStatus;
+                // Open calendar configuration
+                $('#btn-calendar').click();
+            } else if(details.reason == "update") {
+                // Build strings
+                var updateNotice = "Updated from " + details.previousVersion + " to " + thisVersion + "!";
+                var continuedSupport = "Thanks so much for your continued support!! :) -Hawkins";
+                var noticeBoardStatus = updateNotice.concat("<br>").concat(continuedSupport);
+                // Log updates in console
+                console.log(updateNotice);
+                console.log(continuedSupport);
+                // Write update notice to #notice
+                document.getElementById("notice").innerHTML = noticeBoardStatus;
+            }
+        });
+    }
+    catch (err) {
+        console.warn("Failed to load chrome extension version");
+        var noticeBoardStatus = "To install Simple Start Page,<br><a href=\"https://goo.gl/95jal3\">download the Chrome extesion.</a>";
+        // Write update notice to #notice
+        document.getElementById("notice").innerHTML = noticeBoardStatus;
+    }
 
     // Now load link settings
     loadSettings();
@@ -191,8 +227,7 @@ if (document.addEventListener) {
     }, false);
 } else {
     document.attachEvent('oncontextmenu', function() {
-        console.log("Uh oh! You've tried to open context menu, and your browser was unable to substitute our own with an event listener!");
-        console.log("If you're seeing this, please open an issue at http://www.github.com/hawkins/start-page/issues")
+        console.warn("Uh oh! You've tried to open context menu, and your browser was unable to substitute our own with an event listener! If you're seeing this, please open an issue at http://www.github.com/hawkins/start-page/issues")
         window.event.returnValue = false;
     });
 }
@@ -240,17 +275,25 @@ $('#popupform2').PopupForm({
         if($('#calendar-id').val().length > 0) {
             return true;
         } else {
-            alert('Google Calendar ID is a required field');
+            alert('Google Calendar ID is a required field. Set to \"0\" to disable Google Calendar.');
             return false;
         }
     },
     submitted: function() {
-        // Save the calendar ID in chrome.storage
+        // Save the calendar ID in chrome.storage or localStorage
         var calConfig = $('#calendar-id').val();
-        chrome.storage.sync.set({"calConfig": calConfig}, function() {
-            console.log("Saved calendar to chrome.storage.");
+        try {
+            chrome.storage.sync.set({"calConfig": calConfig}, function() {
+                console.log("Saved calendar to chrome.storage.");
+                $('#calendar-id').val(calConfig);
+            });
+        }
+        catch (err) {
+            localStorage["calConfig"] = calConfig;
+            console.log("Saved calendar to localStorage");
             $('#calendar-id').val(calConfig);
-        });
+        }
+        // Now load the calendar with that ID
         loadCalendar($('#calendar-id').val());
     },
     submitSuccess: function(data) {
