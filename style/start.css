@@ -125,6 +125,15 @@ html, body{
     right: 5%;
     bottom: 0%;
 }
+#notice {
+    position: fixed;
+    display: none; /*hidden until height large enough*/
+    font: 14px/1.6 'Kameron', Georgia, serif;
+    text-align: left;
+    float: left;
+    left: 5%;
+    bottom: 0%;
+}
 h1 {
     font: 400 75px/1.3 'Oleo Script', Helvetica, sans-serif;
     color: #2b2b2b;
@@ -167,19 +176,56 @@ form {
     box-shadow: 0px 0px 8px 2px #a8a8a8;
 }
 
-/*Only show signature if tall enough*/
-@media screen and (max-width: 700px) and (min-height: 500px) {
-    #sig {
+/*Only show signature and notice if tall enough*/
+/*If < 700 width, requires at least 700px height and 350px width*/
+@media screen and (min-height: 700px) and (min-width: 350px) and (max-width: 699px) {
+    #sig, #notice {
         display:inline;
     }
 }
-@media screen and (min-width: 700px) and (min-height: 600px) {
-    #sig {
+/*If >= 700 width, requires proportionate height to display at least full name clearly.*/
+@media screen and (min-width: 700px) and (min-height: 790px) and (max-width: 799px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 800px) and (min-height: 810px) and (max-width: 899px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 900px) and (min-height: 810px) and (max-width: 999px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 1000px) and (min-height: 820px) and (max-width: 1099px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 1100px) and (min-height: 830px) and (max-width: 1199px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 1200px) and (min-height: 840px) and (max-width: 1299px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 1300px) and (min-height: 850px) and (max-width: 1399px) {
+    #sig, #notice {
+        display:inline;
+    }
+}
+@media screen and (min-width: 1400px) and (min-height: 860px) {
+    #sig, #notice {
         display:inline;
     }
 }
 
-/*If not in small window:*/
+/*If in wide enough (700px) window, display content in large fonts*/
 @media screen and (min-width: 700px) {
     #main #calendar .gcf-title-block {
         font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
@@ -187,7 +233,7 @@ form {
     #main #calendar div {
         font: 20px/1.6 'Kameron', Georgia, serif;
     }
-    #sig {
+    #sig, #notice {
         font: 16px/1.6 'Kameron', Georgia, serif;
     }
     h1 {

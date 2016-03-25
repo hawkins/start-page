@@ -129,23 +129,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if(details.reason == "install"){
             console.log("Thank you so much for installing my simple start page Chrome extension! :) -hawkins");
             $('#btn-calendar').click();
-        }else if(details.reason == "update"){
+        } else if(details.reason == "update") {
             var thisVersion = chrome.runtime.getManifest().version;
-            console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
-            console.log("Thanks so much for your continued support!! :) -hawkins");
+            // Build strings
+            var updateNotice = "Updated from " + details.previousVersion + " to " + thisVersion + "!";
+            var continuedSupport = "Thanks so much for your continued support!! :) -Hawkins";
+            var noticeBoardStatus = updateNotice.concat("<br>").concat(continuedSupport);
+            // Log updates in console
+            console.log(updateNotice);
+            console.log(continuedSupport);
+            // Write update notice to #notice
+            document.getElementById("notice").innerHTML = noticeBoardStatus;
         }
     });
+
     // Now load link settings
     loadSettings();
 });
 
-// Search on submit
-$('#searchform').submit(function(ev) {
-    setTimeout(function() {
-        close();
-    }, 1);
-});
-
+// Add
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         // Context menu tried to open, so lets stop it and instead reconfigure a link
@@ -189,7 +191,8 @@ if (document.addEventListener) {
     }, false);
 } else {
     document.attachEvent('oncontextmenu', function() {
-        alert("You've tried to open context menu");
+        console.log("Uh oh! You've tried to open context menu, and your browser was unable to substitute our own with an event listener!");
+        console.log("If you're seeing this, please open an issue at http://www.github.com/hawkins/start-page/issues")
         window.event.returnValue = false;
     });
 }
