@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 // $('#btn-calendar').click();
             } else {
                 // Configure Google calendar
-                loadCalendar();
+                loadCalendar(calConfig);
             }
         });
     }
@@ -181,8 +181,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadSettings();
 });
 
-// Add
+// Add remaining isteners
 if (document.addEventListener) {
+    // Right click
     document.addEventListener('contextmenu', function(e) {
         // Context menu tried to open, so lets stop it and instead reconfigure a link
         // But let's only let it work on specific parts of the page
@@ -223,12 +224,40 @@ if (document.addEventListener) {
             $('#btn-header').click();
         }
     }, false);
+    // Left click
+    document.addEventListener('click', function(e) {
+        // Linkdiv menu
+        if (hasClass(e.path[0], 'menu')) {
+            e.preventDefault();
+            var linkdivMenuOverlay = e.path[0].parentElement.getElementsByClassName("overlay")[0];
+            var index = 0;
+            // Toggle menu
+            if (!linkdivMenuOverlay.style.display) {
+                // Reveal menu
+                e.path[0].parentElement.getElementsByClassName("overlay")[0].style.display = "inline";
+                e.path[0].style.color = "#EEE";
+                for (index = 0; index < e.path[0].parentElement.getElementsByClassName("menuitem").length; index++) {
+                    e.path[0].parentElement.getElementsByClassName("menuitem")[index].style.display = "inline";
+                }
+            } else {
+                // Hide menu
+                e.path[0].parentElement.getElementsByClassName("overlay")[0].style.display = null;
+                e.path[0].style.color = "#777";
+                for (index = 0; index < e.path[0].parentElement.getElementsByClassName("menuitem").length; index++) {
+                    e.path[0].parentElement.getElementsByClassName("menuitem")[index].style.display = null;
+                }
+            }
+        }
+    });
 } else {
     document.attachEvent('oncontextmenu', function() {
-        console.warn("Uh oh! You've tried to open context menu, and your browser was unable to substitute our own with an event listener! If you're seeing this, please open an issue at http://www.github.com/hawkins/start-page/issues")
+        console.warn("Uh oh! Your browser was unable to substitute event listeners! If you're seeing this, please open an issue at http://www.github.com/hawkins/start-page/issues");
         window.event.returnValue = false;
     });
 }
+
+// Add left click listeners
+
 
 // Quick Link Configuration
 $('#popupform1').PopupForm({

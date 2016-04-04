@@ -110,6 +110,21 @@ html, body{
     margin-top: 0%;
     margin-bottom: 5px;
 }
+#linkdiv div .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 0;
+    background-image: none;
+    display: none;
+    width: 100%;
+    height: 100%;
+    /*z-index: 10000;*/
+    -webkit-box-shadow: inset 0px 0px 30px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 2px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 30px 2px rgba(0,0,0,0.5);
+}
 #sig {
     position: fixed;
     display: none; /*hidden until height large enough*/
@@ -132,6 +147,80 @@ html, body{
     float: left;
     left: 5%;
     bottom: 0%;
+}
+.menu {
+    position: absolute;
+    left: 4px;
+    font: 200 30px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #777;
+    z-index: 10000;
+    /*z-index: -1; Behind h2 if necessary */
+}
+.menuitem {
+    position: absolute;
+    display: none;
+}
+.addCollectionBtn {
+    left: 10px;
+    bottom: calc(20% + 10px);
+}
+.addLinkBtn {
+    left: 10px;
+    bottom: 10px
+}
+.removeCollectionBtn {
+    right: 10px;
+    bottom: calc(20% + 10px);
+}
+.removeLinkBtn {
+    right: 10px;
+    bottom: 10px;
+}
+.addCollectionBtn, .addLinkBtn {
+    background-color: #27ae60;
+}
+.addCollectionBtn:hover, .addLinkBtn:hover {
+    background-color: #2ecc71;
+}
+.removeLinkBtn, .removeCollectionBtn {
+    background-color: #c0392b;
+}
+.removeLinkBtn:hover, .removeCollectionBtn:hover {
+    background-color: #e74c3c;
+}
+.menuitem {
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 4px;
+    width: calc(100%/2.6);
+    transition: all 0.5s;
+    cursor: pointer;
+    /*margin: 5%;*/
+    z-index: 1000000;
+}
+.menuitem span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.menuitem span:after {
+    content: "\25BA"; /* Right triangle */
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.menuitem:hover span {
+    padding-right: 25px;
+}
+.menuitem:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 h1 {
     font: 400 75px/1.3 'Oleo Script', Helvetica, sans-serif;
@@ -238,7 +327,8 @@ form {
     h1 {
         font: 400 100px/1.3 'Oleo Script', Helvetica, sans-serif;
     }
-    h2 {
+    h2,
+    .menu {
         font: 200 40px/1.3 'Oleo Script', Helvetica, sans-serif;
     }
     p1 {
