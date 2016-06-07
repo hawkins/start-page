@@ -23,6 +23,18 @@ And that's it, you're done!
 ### Contributing
 I welcome all types of contributions. If you have suggestions, feel free to create an ["Issue"](https://github.com/hawkins/start-page/issues/new). If you'd like to contribute code, [fork the repository](https://github.com/hawkins/start-page#fork-destination-box) and submit a pull request of your changes.
 
+#### Development Environment Setup
+I suggest cloning the repository's `master` branch down and working from there. Chrome will give you an annoying popup everytime you start chrome with the Development extension installed as such, but it's the best way to develop. Installing the finished extension from the Google Play Store will not have this warning, of course.
+1. Clone the repository's master branch
+2. Open Google Chrome
+3. In the top right, click the hamburger/menu icon and click `settings`
+4. On the left side of the settings page, click `Extensions` and then check the box next to `Developer mode` in the top right. (This may require restarting Chrome.)
+5. Click `Load unpacked extension...` and browse to the folder you cloned `start-page` into and click `Ok`
+6. Accept any warning popups that Chrome may provide in some configurations
+
+And you're done! If you have any questions, feel free to make an issue on the GitHub page.
+
+
 ### Resources
 This project uses a variety of resources.
 - JQuery 2.1.4
