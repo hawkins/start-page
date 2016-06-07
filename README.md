@@ -25,6 +25,7 @@ I welcome all types of contributions. If you have suggestions, feel free to crea
 
 #### Development Environment Setup
 I suggest cloning the repository's `master` branch down and working from there. Chrome will give you an annoying popup everytime you start chrome with the Development extension installed as such, but it's the best way to develop. Installing the finished extension from the Google Play Store will not have this warning, of course.
+
 1. Clone the repository's master branch
 2. Open Google Chrome
 3. In the top right, click the hamburger/menu icon and click `settings`
